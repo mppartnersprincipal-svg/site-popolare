@@ -1,0 +1,497 @@
+{
+  "produtos/agnolotti": {
+    "src": "/img/produtos/agnolotti",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAADQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JagCdMoRwIr/S/4D4M504brb5jWGjwAD+R09hBU6UdzIa1zqBAYLYc8BHTumrYI2uNmM1dqM6HaVr4bhRxA8aHFOA3vlYDta9Flo1zUzd4nEIFSPZwXYiX9juN13bFolHDS/0l+eBTOQf8cEdZFQWh+FZ7q4THPuPpeHlVivszGHnfYAAAA=="
+  },
+  "produtos/cannelloni-salsiccia": {
+    "src": "/img/produtos/cannelloni-salsiccia",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6663,
+    "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JagCdH8AC+Q6DLPGHWxxGIZAAAP59WfMAgwtA0t5aFlaGNqkqXe8cHPXlPOHS6MRfqUrki8F6Aio5czamb4SqEABZoV+ZR7Quyg4wnTAk6G0BQbxTS3CstPATgk/QmRS9gfweRj9hVfhhO/enT5vpbzQA6QAA"
+  },
+  "produtos/cannelloni-salsiccia-cru": {
+    "src": "/img/produtos/cannelloni-salsiccia-cru",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAABwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JYgCdMoBOACJ6D39AvPTNABc0AAD9GJ1Plis1ygxDK4pjbqAityWioBqsJBc8cMkv2KH/4q57v8ReTRP0gVWedY+rLFIjTNZdmFhY4cL80oxqCCicmIP88AA="
+  },
+  "produtos/cannelloni-carne": {
+    "src": "/img/produtos/cannelloni-carne",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAABwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JZACw7YuuttgnvlD++TP0ekcwAAD9PJ96uBwWB4VXkHOAKU4qTYoZmRiaqLG9BrAjG7O4sO5mhRKL2oBWm92oI6q7aPCLSbvhA5YwmO7YccAqM1i4XxUhkM3IGGQBdLghpUgVQQDUBJM/hQAAAA=="
+  },
+  "produtos/cannelloni-pollo": {
+    "src": "/img/produtos/cannelloni-pollo",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1,
+    "blur": "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAACwBQCdASoUABQAPu1wsFIppiSiqAgBMB2JaACdMoHgA5/8A+RJvaAKeLDqQXoYslrSSMNuRgAA3fvcG9XC1NUU/FkHInmuFQKJU/OTKsQ3Pb6G7J2I6bGFPVVYM+4ktZH9QzfjnJmoNPY82dUUjIjXdwEn6vhTJozxYNDMQzRAleNX7HiFI75nh4A8rRf8ueoPiGdcR0QULgzi4/Sw6c23PydjuLbSK9AhOisvFtUqHJ1+FRpEQVk1eGrWelscX9PGrSwwAAA="
+  },
+  "produtos/cannelloni-ricotta-spinaci": {
+    "src": "/img/produtos/cannelloni-ricotta-spinaci",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JYgCdMoADgn6DeZJ4FKxKVDAA/Z1mXVfoHdIO+mpHrAGPWO8g+yMRSkF2O6GrEdsGTvON7QQr6+bkW2ayqwa8RgGEbxqbseBoT7fayes7vYKd2URc45kMTSMAYHYheAd3AAAA"
+  },
+  "produtos/cappelletti-pollo": {
+    "src": "/img/produtos/cappelletti-pollo",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoRwIr+Af2aCPxa69nYp0AD+eS+RhRPaZQ1DfFl9CX1Rgj7eITpGv5Hw7zXWf3UX7NzWPg8lNfB1MFDxvy8sb+zg8HVjM58wN/7A8X6yw2AoGHP2FZRC4sXNnLTTSa2+CSksB4n2spkSB676Czez84N+EtEBKWAA"
+  },
+  "produtos/fettuccine-pesto": {
+    "src": "/img/produtos/fettuccine-pesto",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JQBdgBDeYDX9aygjK4QFyAAD+7iUiXUtZy4clt3tLXg6oqXvPcjdjSehwOfK4BNTdYr+zJ18v2YypVhe1KyEgarsML7bsj+iPQcCK6bHDkrilRYt9WbWXAAA="
+  },
+  "produtos/fettuccine-funghi": {
+    "src": "/img/produtos/fettuccine-funghi",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAABQBACdASoUAA0APu1iqU2ppaQiMAgBMB2JQBdkCbk/wID5CLf3oGUKRPZwAPfS1NaIGjvV0Xr2TBEshToq0w0MBMMsIj7UBpEN/rtrci6oLcliAhFKc4K6zXA6fu+4laRhxE93+slBKnFw4mhVm9m21hdduqYQY+F0f74/52LqzbUr6fZbkmDQQAA="
+  },
+  "produtos/gnocchi": {
+    "src": "/img/produtos/gnocchi",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoRwIr+Af4pLoxHxYP+pHSKAAP54r5lXqDOafmL9qlKvZHTtsHemzfJ8NrMHFMuYB7NtCoCnfyUbJJpAQLgvvQ0Upqq1Ms6iyqPmBF5f15rDexDqXNXmVhUuXGusbxTancE61+21oJKHLcDUCU+tesAA"
+  },
+  "produtos/gnocchi-cru": {
+    "src": "/img/produtos/gnocchi-cru",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBQCdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoRwIr/23QFKSzHgcp/XXyfVnZmAAP2223PuiO+0ycDb596neOurXl/a7nT6O/avoMIhFZNBlrhJFUJZHJ6UmG+2/sh5lsbSU2Xj/K9XtVxhoUO2yxBNhS2YGUu/v3IILDZFclj/AAA="
+  },
+  "produtos/lasagne-bolognese": {
+    "src": "/img/produtos/lasagne-bolognese",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JZgCdIIjC9dbTkoIZeZRD0gAA/oODKxNH63h7srys6nbhVrBHeywG3ZwjGbfnfhRUKuogvUhS6SXS5r6tGO1gh2a2WT8tMK7PuCAMSnGvlHRGwkeE1i11YAAAAA=="
+  },
+  "produtos/lasagne-bolognese-cucina": {
+    "src": "/img/produtos/lasagne-bolognese-cucina",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAADwBACdASoUAA0APu1kqk4ppaQiMAgBMB2JbACdMoR3JzR0AAM1/NwnlnfOV6P5DGAA+fZ18vlcUqupRNvP8V048z+UKe6GdrHxFncTtSawjJ0/tDCxdA1FUAuoixAEB+eSiMI0ciHD0eddhyWkPaaCi1XxjweDA7kp6wse+f/M2ywse4/hJqDrWHHUPV7NRBGTNM4AAAA="
+  },
+  "produtos/lasagne-quattro-formaggi": {
+    "src": "/img/produtos/lasagne-quattro-formaggi",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAACwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JZgCdMoRwIr/S/4DerXr+qhTIzUoAAP68mFdH37rBtqvBEM0ltY2BuNtHt09wdTK/aFIIQ2IJxgfv3NBlckMHgrpyIeXmz1mOuy5xttQqDgu9s3hpeQW/NTDXbm7GJ4CkeJx+6IOj1FgEOrAAAA=="
+  },
+  "produtos/pesto": {
+    "src": "/img/produtos/pesto",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JYgCdABoyiMTyBy940mGAAPjPW3aUQvtOMF1VvfPJhrvj1E/8H+WR6wlJkt4fjDCZu7w29xHvqJp4h8GGxNuDoAIVCLyxn0AAAA=="
+  },
+  "produtos/ravioli-carne": {
+    "src": "/img/produtos/ravioli-carne",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAACwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoMYA0g5m77dyiL4eF/95sAwAP4nmgpTwrjqlHdHjUGVk15/CSZ4xsiG+8hOYM5S5z4F3QRyU4TO34dYsB5aTF3uCXurkC65Qk56YC/YCx4YDXsVz99Lfjjf7T0GrPyDs6MgZw2tRRFDZDOefL8D8Q78t8gfIiZLTldTZRIz7rWAAA=="
+  },
+  "produtos/ravioli-tre-formaggi": {
+    "src": "/img/produtos/ravioli-tre-formaggi",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAACwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JaACdMoAlvRWnYbuCXY/WQtr3f1MAAPKX+9mgYCknm+eZlEbZn0+BkwMpmiK4dmBzIOHouQ/S/OuHhvgt4c3hY/tEElbiDoiGqnGXE/6Dv7lCtHiZwYGn2WgKSUGQKb8F4EWCf9H2uDujPm7s5f6LYOEPnA1Dblo6kzFAaYZR5/+ILE5AcAAA"
+  },
+  "produtos/ravioli-brie": {
+    "src": "/img/produtos/ravioli-brie",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1,
+    "blur": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAABQBQCdASoUABQAPu1usFKppiSiqAgBMB2JZACpJ2QlwAka4s3c+sXs5VcM3E7/Mi+XfgAA/qbHtokIs7u2PmMnTHQtRGOaxWJq0JynKlLHQHD64oNwwh/E3p+ffu5QZKi1FkYH2yvrzv2dXpZENh3ESV/jts+7Jd876YnyLtoskRCZ707XeaAX7grt1DF1JyfikzEsyS5dx3ILckiMwvTn7cgbljwKLXA2y5HIEMyhgfIJfLl6IAAA"
+  },
+  "produtos/ravioli-verde": {
+    "src": "/img/produtos/ravioli-verde",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoR2WCq9TQ7/DlMrICg8AAD+ANlsppbzRDoEHo/Q7AQgma6B+bOjlYDmajnkpGtpoCMJWHRro9raXEMlqnJ0zjLwp3XHLiVg4Vk0m+Q0Reu6YWWNY45p3EYcy6ltE/eg8413T53x6I4xqEzozuYAAA=="
+  },
+  "produtos/rondelli-prosciutto": {
+    "src": "/img/produtos/rondelli-prosciutto",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JQBdl4DcAA/Xp4//hP1u0FcwAAP2jsYNnWZ3Hw+oHc4dzP4l9oBtOARNsPzpp5hvfFSMl+iorPEEk0bQvda7wpK2b00POXZg3b5akeFb01+Y7X1T1LQhCzQXN4ehAoVsw4p44jL8BJAAA"
+  },
+  "produtos/sfogliatti-bianco": {
+    "src": "/img/produtos/sfogliatti-bianco",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoRwFf/i2Nm/VHoU4AVbJqjA00AA+N+I2qVyScJxkpByKaCMa1m4boB2m9jFWkdhiO56tmxV+Zz5AIV3awWhm7bPNBdER+BVBMpsiKs1g7G6sdVFgsKHmL5VrwakeTOfCRPENnDeoMvZ6gAy2GVZcNWT63LXALzWyY+ZP4qKI1TdOlawAAA="
+  },
+  "produtos/sfogliatti-bianco-cru": {
+    "src": "/img/produtos/sfogliatti-bianco-cru",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JZgCdL1yBZ8kJaOIPeRRd+AD+NGwhEJyg7Fj0QBFKshsjqKolOPEvGU3mS08J596voXxgaVd+ovWVso58nb07vyJaRh0x1rQ/NVJp0w5OcOVjpbRd3D7BapynbTYXTYzHAwLiCiFu8QLyAAA="
+  },
+  "produtos/sfogliatti-giallo": {
+    "src": "/img/produtos/sfogliatti-giallo",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAAAQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoADgq9v6J1S3Dx23gD70FWuCjUICRWyy5dJ83+BiYQ97c0J/Gu2aXmS+GyT8X58Sh+Y2pXbOL9a8rlRGvS6Z+3hf6rP9X7HIodoSe6lNheo7WgrlzFp8FVKiPRSl0KkeVDlBIIAejW+Wa67qDbw96fuC1KMErlj9GIx1y4C8kGFyZdv6SOoAA=="
+  },
+  "produtos/sfogliatti-verde": {
+    "src": "/img/produtos/sfogliatti-verde",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAAAQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JZgCdMoMggCQ4/xUKee4lsAD+eMJMkM7m/D1JYAPkl+JvIFtvm9M7AHPhubB+A7TsN4adN4DKKIYm79npyZzieehffIcELXFZ2IQKptJddX2z2gDFcmxDcRD9lhIKVH/PhAgw8BH8wcTkGSrAAA=="
+  },
+  "produtos/sfogliatti-verde-cru": {
+    "src": "/img/produtos/sfogliatti-verde-cru",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JagCdLwGT/gAADZiN/pHSBlaS+UZGAP2dBzUlfPzzyy4YrzgHXto9W/b9JUfu1McHegwEv/RmP8QFLMCUmg4TfzaC5J13nXSwOXEIf3u7J1vGSdRoJhCLUIA8pUIirodJkVfKpV2d9u/OaYsIaAAA"
+  },
+  "produtos/tiramisu": {
+    "src": "/img/produtos/tiramisu",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JQBOkCbk/wGHb6RrCeMhagGAAzEuO0cJ7UatVsvjMGUZEibrdQ4rtq/ywvlIDw3Bfcm+C/76PorSbcjkzU1xv4Hf0OVm6ewm4xe+pIIAAAA=="
+  },
+  "produtos/involtino-pizza": {
+    "src": "/img/produtos/involtino-pizza",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAADwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoRwN0AZf+A3zCHtFTR1tMVONAAA99Xdu7F0AWkMiFIYnEU87TMfm5rvxluBCOo4UjLhM4CbWJzsnzqjtc18oN6nLNmpVWGmqzQvABuILtjYwsJHTHeMXnROiyYDi+NloG6pTZf+wAA="
+  },
+  "produtos/tortelli-zucca": {
+    "src": "/img/produtos/tortelli-zucca",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAACQBQCdASoUAB4APu1mrE8ppaQiMBgIATAdiWYAuwGMnm/ohmhB82cY1KVG9bZ0BJ0VC9OySAD+4ydz6bu3wj7/1VSJl+UcGUXiYsWceT0NdAA2GdfAqiFHqtYwknu3UX5MimMft1g8NdTCeiupS5vr5hFz6xnFxCLQAHRgAw7pRzwshXwVa65h2fto/C1xLzVs6cVHmFa4Jf6JEvxqEFPj18lRWwbRsLP6YgXxH4FcsNi8P+ZOn8H7kZZbZlOcSKZE68AA"
+  },
+  "produtos/sugo-pomodoro": {
+    "src": "/img/produtos/sugo-pomodoro",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.75,
+    "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JbACxAQAAdV9Hbqyxsc9ntmIAAP7xSGabs2Rk3ie+MqacvmfuB6u/LCXGiml3oR6yRV2Tu0pa7aKOUwsrcMwZxLgA/HG8itFq7quWRUSs6I1CMJoM2vhDyo+MR9QQEQkJClodf9rmxwG8EdPDitSDcPsAAA=="
+  },
+  "produtos/alla-panna": {
+    "src": "/img/produtos/alla-panna",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.75,
+    "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JZgCw7CG1dquFu+xUWXmoAP5Sysx8gT98WkxcBJ8g/1qctPwO+BPsY4fA8cVX4k02pcxRPz0WWe/osUmVAkIiBtshIesypNt+wpNIAauQmjDgAAA="
+  },
+  "produtos/brodo-verdure": {
+    "src": "/img/produtos/brodo-verdure",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAABQBQCdASoUAB4APu1mqk8ppaOiKA1RMB2JaADMPNiFczBV3x0ZyCN08YmOYf7MNO7PVrAAyeFuj/Ly2JhVxwDfKRaCb7sgja4t24GbTSYyzv1luDz52E3WdVBob/jYR2a6WLp4F8Y7kH9txuXuTj/kK2GmvjZG7vJtxfJbVg4oBfY6gssU900lfYZRw0cyMPgsjTFkEmsF8rZm9xJa2MC7cVjVB4nnkACITgJB6lXSZWbWoFP8AAAA"
+  },
+  "produtos/rondelli-mozzarella": {
+    "src": "/img/produtos/rondelli-mozzarella",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADwAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JbAC2yB8lPoYNLkfx3mqAAP1Tsan/lRWuLTZDTUuKLVy2Dvrnc9lcM6Dk+b+sW2VWG9TzI7Zdz3KgrVN2wpSgMOlzrR8wuJ0LzcCWmw6gIMzgTKNIGZYDTv5Na7d2oaAtj0LjiLxp+g+TLms5tr36AUcAAA=="
+  },
+  "cucina/forno-gratinado": {
+    "src": "/img/cucina/forno-gratinado",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAAAQBQCdASoUAB4APu1qr1CppaQiqAqpMB2JZgCdOUFUHkCNDR/wDdkypwTaoobTOH5gAP7w31vTUOIE00u5mbF4pDCoC4snyZgKrhUZSwSHQiInAxKznzw6vA/FWJxhFCiSuOxeOqu7ANzbBBbvwqF9htfqewlwH+lSfFNDZN6YdBzl/sEkC3n5DVGXaCCy9w2KUixBc4U+UgP4DMgJDGpwDFm/jcZl/QtAkjexMsdmIJBwR91UIIojGJ1InfuQbsoaujkQAAA="
+  },
+  "cucina/forno-servindo": {
+    "src": "/img/cucina/forno-servindo",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoMYJn/AfV4bdqkIzTYNiZAA/VIQmAzUlJVwN/EBJqk/NILKm6N05nB7p/j8xEy75iorarppsS1P3Vbc5dU52+SWGXvtNlvBfDrMIwr8P1oGG6NluhuZT7OR7J2qu7pB+cNQSejWz380U8niYD0kAAAA"
+  },
+  "cucina/forno-fogao": {
+    "src": "/img/cucina/forno-fogao",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAABwBgCdASoUAB4APu1irVAppSQisBgIATAdiWwAnTKDyxHDdgM//dqoDBDH1p+60eQYg9cjTKw06EApGAAA/uoIT0DebsThcnt2KpR8+6sbHxQaq7GkU7yd4yql/9tEtXJP1u227aEmCH5TWlPWszTXQAAEVzW1tP+kBIK7Cqx89pGGK1oW/QETM0c3rsTOw/xqezOkStOoxYhc1zIBDIBPtwV8PxKWKt2PA3QEUHrBLO/rhOcNHwMOc0Al9ThwvAjLIjxri4wXWW+UUjSwtAXi8UY9DAshVwYXA9jjj+x5AK8zmVOvpTpMD6brsuAA"
+  },
+  "cucina/molho-branco": {
+    "src": "/img/cucina/molho-branco",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAACQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoR3ACZ+oikBpR4bB4UKHYAA+LWNbJw/eY7fLjMF03sLJgEARfLcXQfirD7HnTcCXMqim9EFXlu3fFXU2LQqi2nTOEUH+rZXG/CUHoZOdk/bKuxuBeDRMrv1scH3KGmsQChEtLZsyv8TQl+51GaSfGTKu4zMKMgA"
+  },
+  "cucina/lasagne-fogao": {
+    "src": "/img/cucina/lasagne-fogao",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRvgAAABXRUJQVlA4IOwAAADwBQCdASoUAB4APu1qrVCppaQiqAqpMB2JbACdMoMehngAMZ+3cxfsYfWMBRxHDmp27UTGlxK1gAD+ieQccVCdk+NOG8FZgMvy/SztpUjzwtz+ITForGF9ah6fEXlWMfYQ2PvWnHf92sHndoTqyrRCAayQVYVPd5+zxcwuJ0aYMgKTmHrpiutaCw3Ehg50dyKPN3B0Z1xP0261xfXDn0fda+siKHdVmWd//k0CerAX4c6EYzHSyyJQBaxDUDLwg5MUrLz5Og3TKxyIYuwz840hUCqK4+jwsYNq8vYixyy+po1JBcJnDYO9TQAAAA=="
+  },
+  "loja/fachada": {
+    "src": "/img/loja/fachada",
+    "widths": [
+      640,
+      1080,
+      1600,
+      2400
+    ],
+    "aspect": 1.3333,
+    "blur": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAACwBQCdASoUABsAPu1sq1EppaOiqAqpMB2JbACdMoRwFf/i2WRilGKbCFFHydGIJ/4LInN8DIAA+euZujJiUZ9Ays7SGVLP0ZCQo/32zwhLiOn+UISXX1fsx8qCHESakSELWrhpgzzKr/CH78VQEURDA+sCL0QwCPltKkCJ5NTgxcSnc8CATWxnNds+9bDVVX+wNWotkATWICB5KwgTsczEo2SxEsoBkYL9TxQNWt+nLqKEnOIpXw2p0AYcSqHNZz9el75fpoh9htqHKcR3F92rNkshQfyxpb1SN29YxpazlHK5gVdcf+rKy/WbYcuCAAA="
+  },
+  "loja/balcao": {
+    "src": "/img/loja/balcao",
+    "widths": [
+      640,
+      1080,
+      1600,
+      2400
+    ],
+    "aspect": 0.6667,
+    "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoADgPXcU8hE0AoA2oYAAM1uuQweqhy7kzIasZpnOvvG2W0+1d44rz38+6vRJe9G8cYmrDdM88UiZhx+jyFCzsi3fhHrp8yXHmUmZ+7+QK/+odyTcuxfR2Ee7kWYxgwMq6uqtBhfLCK/w4gA"
+  },
+  "loja/janela-emporio": {
+    "src": "/img/loja/janela-emporio",
+    "widths": [
+      640,
+      1080,
+      1600,
+      2400
+    ],
+    "aspect": 0.6667,
+    "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JYgCdMoACSmiAEycjLTz7AAD7IXjlaXesm9WEeZClkd7ZCiQ9UJrzLYmSn7ziH9M1m87tiNvRVLgG+WfBKeefXUG05fgGQmpqubVry7EBccBlymHB8RJSigo8y+NBQIoAAA=="
+  },
+  "loja/grissini": {
+    "src": "/img/loja/grissini",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAACwAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoAC/u26fDhXAAD9KhP4pdHarAnsHbL7TfRiu3UFTf4LBa8LymPLe9GWVEnbPOj3cwHu63PwbnomZcPLKvw1DwRtK3cyU9bByJ7Xlytl8JzvOAPXfUeTbvRVO6LSD7zcKnqDQDp7kZN179iJqDa0Q1q57mj2SAAA"
+  },
+  "loja/prateleiras": {
+    "src": "/img/loja/prateleiras",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRggBAABXRUJQVlA4IPwAAADQBQCdASoUAB4APu1iqE2ppaOiMAgBMB2JaACsMyYCnSABLv2f6tK3HgR2/Gt46/aRWGdjE+OwAM3rOkZEYHHHquKQaEXTC+93iXPEsV8o+BSFgVjNN5sKjnSNVyB06juuue5fjFeXi4CXlS5IkQclnmLjP7ileA/aiTGk/o0wPVzYnigyxa58lWOt7bznAqv/E/UQ+2YKG3Wi0jbk1VPUDOOYJ9DNgwRq92ko2twI2QW6T8CgQiwVzV71lMjR7dJKV5ZiEB1gGcKYSWB0aBdTdpVIIf4mJzwaJtwem9X46jCKmdXkihIbarzBQ1w0lhHgUA+7HYMrGrTBpAA="
+  },
+  "loja/vinhos": {
+    "src": "/img/loja/vinhos",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRggBAABXRUJQVlA4IPwAAAAQBwCdASoUAB4APu1iqU2ppaQiMAgBMB2JbACsOUFUUuA4ttStygAv4e2uiDVOf6V9+iASIl6iuf5+tawkVmVIAADuXTEYBH8n5pUhuNwWF+VvQpoHnkyi3YcKJKsSWu6SvYolVkhZqo8rKYV6vYypn1+yug+7hRUSY6QO71dKO57QlgURWAHtpiHqBjPB03WPWkqJ/iqQy7/VnEmx86skvPpwWKqO5kIRGbBSOKHbcdV5qxSetjvWYt+dq2GW0KXUHJJX4l2oLQ4IFImqOHBgFO5pAF7Z39ji7xpgJZUER0YtieR8QFm6NLmrI4NK5sq7hD8GVw15/v0AAAA="
+  },
+  "equipe/carina-retrato": {
+    "src": "/img/equipe/carina-retrato",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRvAAAABXRUJQVlA4IOQAAAAQBgCdASoUAB4APu1qrlCppaQiqAqpMB2JbACdMoMxuG7b44Bd7hRPPOA1JSV0yub3zTCoBB2fc/AA/r5+Gk6+JViFIZrZ7SC/ixYyzKqpvIEGrZgxlwfbG0T2LZAEedObg9odEmaGqDGkLmaWuxL/qouv5d4uiuUkTZ0Yh2y6aUBdXWNzZAIFhAtEeB8t8Ffw5IroqkeskLQ8QjMYuNnW/alh02zAdhQNo1tPCPq97tNuaxCL3E/HhjFzrTEa3VmGNDjTEgBzKQxtSTwd71HIF6M/bOXmew1IGamwDXhdKTJQAAA="
+  },
+  "equipe/carina-panela": {
+    "src": "/img/equipe/carina-panela",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACw7BjsICv843SfO5XTYAD+TZD5In8Bk7Bj8BkiDqvYX5TLFqUaLG9HZ2jcnJCkth+c6oRMHthHLFRln0i+6IZSvspEyW+FNZAOvgGruHKnDSqm/4Hb24w6NbrwoEuuHdOBgmDSAAAA"
+  },
+  "equipe/carina-prato": {
+    "src": "/img/equipe/carina-prato",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRugAAABXRUJQVlA4INwAAACwBQCdASoUAB4APu1gp02ppaOiMAgBMB2JbACdMy/lxRecwrlg9eF5ZJ97Zov4/GeG3zEByMgA/trGX2lBV3owb/hy+3icoOveQlZW7dLT7qXgxQ2dqwRDk74TVtZ8JuwqWg7Zr8JsimXpyhl3PzpKWAU3wW3eHLFoI7u5HQHWkoAoD7hZQo8rggPXFg/AewwSFctnZEKa6EGEd/0aMt879Ec/Admsk86TwOhafTqBdviGg2mROabmslMSHOxbVM4zfZ5kz9hzauqjPtY2g/0S5pJ8ULnsMh9jAAAA"
+  },
+  "equipe/carina-fogao": {
+    "src": "/img/equipe/carina-fogao",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAAAwBQCdASoUAB4APu1mqk2ppaQiMAgBMB2JagCdEf/s0AD5YE0DwF1sb6c7NrM7fdYMMAD+owzSysaxCPmI8lNkb64scx24nRP8BKNS4HP7NVLqOrO1q8q91TfedlUdEGiRfE44slCMm+nbgkEilrIbz0rwrK+8D4nJcv1Kcea0GgbtXvdlYpP/8FkYlSprZRwyIF/9RKXpuMRxIisApc1Re9VEM7Gcu8Ed1D6anKMMe/wSGFJTFuhDjOIV104p+P1JXOqgDUQp0S4Un61/uB3JuX/Yh/k4Ens88P/hD8LI/mPhLlTQsIvm7WnAA8gA"
+  },
+  "equipe/carina-emporio": {
+    "src": "/img/equipe/carina-emporio",
+    "widths": [
+      640,
+      1080,
+      1600,
+      2400
+    ],
+    "aspect": 0.6667,
+    "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoR4GCLTqqFvCKk6f3gAzcQayS68z6Xq6LtzktMhXnWZuwTIKnNGnZnrfsK5rHAky41pHGCQg/MXfsDIREaz14t06Mus0UhlFEDXYRJcNyG8GAbxOtatXg27AAA="
+  },
+  "equipe/carina-balcao": {
+    "src": "/img/equipe/carina-balcao",
+    "widths": [
+      640,
+      1080,
+      1600,
+      2400
+    ],
+    "aspect": 0.6667,
+    "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAABQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JZACdMoADg/cWUfSlXCdqmdcAAPWZafMu9RbppqSUqtdHvkDeWvA18EkBfrvpfhLRaUipCjMpfs8YEBDmKgW+L0pbc56tuNMNqAalg88un9U8tsvbEFIhIXqiZvBBX7c3dOG45WgNYtd+wy2zOyuAAAA="
+  }
+}

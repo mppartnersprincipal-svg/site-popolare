@@ -1,0 +1,8 @@
+{
+  "path": "/frames/loja",
+  "count": 96,
+  "width": 768,
+  "height": 1024,
+  "pattern": "f{n}.webp",
+  "pad": 3
+}

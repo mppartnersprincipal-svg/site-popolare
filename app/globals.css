@@ -1,26 +1,223 @@
 @import "tailwindcss";
 
+/* ───────────── Design system Popolare ───────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+
+  --cor-primaria: #9b1b20; /* marsala do logo */
+  --cor-vinho: #590e13;
+  --cor-fachada: #d0102a;
+  --cor-creme: #f6eee3;
+  --cor-farinha: #fbf7f1;
+  --cor-massa: #f0d9a6; /* massa fresca crua */
+  --cor-madeira: #b9802f;
+  --cor-madeira-escura: #85561a; /* texto pequeno sobre creme (contraste ≥ 4.5:1) */
+  --cor-dourado: #eeab3a;
+  --cor-manjericao: #3f6b2a;
+  --cor-tomate: #c8321e;
+  --cor-tinta: #2a0a0c;
+  --cor-tinta-suave: #5b4340;
+
+  --text-hero: clamp(2.75rem, 1.2rem + 7vw, 8.5rem);
+  --text-display: clamp(2.25rem, 1.2rem + 4.2vw, 5.5rem);
+  --space-section: clamp(5rem, 3rem + 8vw, 11rem);
+  --gutter: clamp(1.25rem, 0.6rem + 3vw, 3.5rem);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-massa: cubic-bezier(0.65, 0, 0.2, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primaria: var(--cor-primaria);
+  --color-vinho: var(--cor-vinho);
+  --color-fachada: var(--cor-fachada);
+  --color-creme: var(--cor-creme);
+  --color-farinha: var(--cor-farinha);
+  --color-massa: var(--cor-massa);
+  --color-madeira: var(--cor-madeira);
+  --color-madeira-escura: var(--cor-madeira-escura);
+  --color-dourado: var(--cor-dourado);
+  --color-manjericao: var(--cor-manjericao);
+  --color-tomate: var(--cor-tomate);
+  --color-tinta: var(--cor-tinta);
+  --color-tinta-suave: var(--cor-tinta-suave);
+
+  --font-display: var(--font-marcellus);
+  --font-italico: var(--font-cormorant);
+  --font-sans: var(--font-manrope);
+
+  --ease-out-expo: var(--ease-out-expo);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Base em @layer para que os utilitários do Tailwind possam sobrescrever */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto; /* Lenis cuida do smooth scroll */
+  }
+
+  body {
+    background: var(--cor-creme);
+    color: var(--cor-tinta);
+    font-family: var(--font-manrope), system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--cor-primaria);
+    color: var(--cor-farinha);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped,
+html.rolagem-travada {
+  overflow: clip;
+}
+
+/* ───────────── Utilidades da marca ───────────── */
+@utility wordmark {
+  font-family: var(--font-marcellus), serif;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+
+@utility italiano {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+@utility eyebrow {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+@utility container-popolare {
+  width: 100%;
+  max-width: 88rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@utility section-space {
+  padding-block: var(--space-section);
+}
+
+/* Grão de farinha/papel sobre a página inteira — barato (SVG estático, sem animação contínua) */
+.grao::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.2 0 0 0 0 0.1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ───────────── Portal do hero (estado inicial antes do GSAP assumir) ───────────── */
+.portal-loja {
+  inset: 0;
+  /* topo do arco abaixo do bloco de texto mesmo em telas baixas (iPhone SE) */
+  clip-path: inset(max(50svh, 25rem) 7vw 3svh 7vw round 43vw 43vw 1.25rem 1.25rem);
+}
+@media (min-width: 1024px) {
+  .portal-loja {
+    inset: auto;
+    left: 50%;
+    top: 50%;
+    height: 86vh;
+    aspect-ratio: 3 / 4;
+    clip-path: none;
+    border-radius: 999px 999px 28px 28px;
+    transform: translate(-50%, -50%) translateX(24vw) scale(0.8);
+  }
+}
+/* Intro: escondida sem JS, em visitas repetidas e em reduced-motion (classe aplicada antes da pintura) */
+.intro-massa {
+  display: none;
+}
+.js:not(.intro-vista) .intro-massa {
+  display: flex;
+}
+/* Enquanto a intro cobre a tela, o hero (escondido atrás dela) não pinta: o LCP passa a ser
+   o que o visitante vê. Ao sair da intro (.intro-saindo) o portal aparece sob o "furo" da transição. */
+.js:not(.intro-vista):not(.intro-saindo) .portal-loja {
+  opacity: 0;
+}
+.portal-loja {
+  transition: opacity 0.4s ease;
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+/* O canvas 3D fica por cima de tudo, mas nunca pode capturar cliques/toques/scroll */
+.cena-3d,
+.cena-3d * {
+  pointer-events: none !important;
+}
+
+/* Quando a cena 3D carrega, as fotos de fallback da intro dão lugar às massas 3D */
+.tres-pronto [data-3d-fallback] {
+  opacity: 0;
+}
+
+@keyframes cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+/* Elementos revelados por scroll — estado inicial só quando o JS está ativo */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(1.25rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
