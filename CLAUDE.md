@@ -94,6 +94,8 @@ Consent Mode v2 (padrão negado) prefixado no script do GTM (`lib/consent.ts`) +
 
 ## Deploy
 
+Repositório: https://github.com/mppartnersprincipal-svg/site-popolare (branch `main`, público — nunca commitar `.env*`). Deploy ainda é pela CLI (repo não ligado à Vercel).
+
 Se `vercel deploy` falhar com "fetch failed"/"Not authorized" no upload, use `vercel deploy --prod --yes --archive=tgz`.
 
 Vercel, projeto `popolare-site` → https://popolare-site.vercel.app (envia `X-Robots-Tag: noindex` em qualquer host ≠ popolare.com.br). Domínio do cliente só após aprovação do Pedro; ao apontar o domínio, configurar `NEXT_PUBLIC_SITE_URL` e `NEXT_PUBLIC_GTM_ID` na Vercel.
