@@ -11,7 +11,7 @@ const LINKS = [
   { href: "/modo-de-preparo", label: "Modo de preparo" },
   { href: "/midia", label: "Na mídia" },
   { href: "/blog", label: "Blog" },
-  { href: "/contato", label: "Lojas e contato" },
+  { href: "/contato", label: "Loja e contato" },
   { href: "/politica-de-privacidade", label: "Privacidade" },
 ] as const;
 
@@ -30,7 +30,7 @@ export function Footer() {
         </div>
 
         {UNITS.map((unit) => (
-          <address key={unit.id} className="not-italic md:col-span-3">
+          <address key={unit.id} className="not-italic md:col-span-5">
             <h2 className="eyebrow text-dourado">{unit.name}</h2>
             <p className="mt-4 leading-relaxed text-farinha/85">{formatAddress(unit)}</p>
             <ul className="mt-4 space-y-1 text-farinha/85">
@@ -83,7 +83,7 @@ export function Footer() {
           </address>
         ))}
 
-        <nav aria-label="Rodapé" className="md:col-span-2">
+        <nav aria-label="Rodapé" className="md:col-span-3">
           <h2 className="eyebrow text-dourado">Navegue</h2>
           <ul className="mt-4 space-y-2">
             {LINKS.map((l) => (

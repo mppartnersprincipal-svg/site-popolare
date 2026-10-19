@@ -12,7 +12,7 @@ const NAV = [
   { href: "/cardapio", label: "Cardápio" },
   { href: "/sobre-nos", label: "Nossa história" },
   { href: "/encomendas", label: "Encomendas" },
-  { href: "/contato", label: "Lojas" },
+  { href: "/contato", label: "Loja" },
 ] as const;
 
 const SCROLL_SOLID = 24;

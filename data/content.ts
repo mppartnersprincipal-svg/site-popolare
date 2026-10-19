@@ -129,7 +129,7 @@ export const FAQ: readonly FaqItem[] = [
     question: "Qual o horário de funcionamento?",
     answer: `${UNITS.filter((u) => u.hours)
       .map((u) => `${u.name}: ${u.hours!.map((h) => `${h.days.toLowerCase()} das ${h.opens.replace(":00", "h")} às ${h.closes.replace(":00", "h")}`).join("; ")}`)
-      .join(". ")}. Aos domingos as lojas ficam fechadas.`,
+      .join(". ")}. Aos domingos a loja fica fechada.`,
   },
   {
     question: "Qual é o produto mais vendido?",
@@ -137,7 +137,7 @@ export const FAQ: readonly FaqItem[] = [
   },
   {
     question: "A Popolare faz entrega?",
-    answer: "Sim, pelos canais de pedido online (Menudino e Anota AI) e pelo WhatsApp de cada unidade.",
+    answer: "Sim, pelos canais de pedido online (Menudino e Anota AI) e pelo WhatsApp da loja.",
   },
 ];
 
@@ -147,7 +147,7 @@ export const QUICK_FACTS: readonly { label: string; value: string }[] = [
   { label: "Desde", value: `${BRAND.foundingYear}, em ${BRAND.city}-${BRAND.state}` },
   { label: "Fundadores", value: BRAND.founders.join(" e ") },
   { label: "À frente hoje", value: `${BRAND.owner}, chef e filha dos fundadores` },
-  { label: "Unidades", value: UNITS.map((u) => `${u.neighborhood} (${u.street})`).join(" e ") },
+  { label: "Loja", value: UNITS.map((u) => `${u.neighborhood} (${u.street})`).join(" e ") },
   { label: "Diferenciais", value: "Feito à mão, sem conservantes, receitas de família" },
   { label: "Encomendas", value: "Com 2 dias úteis de antecedência; montagem no refratário do cliente" },
 ];

@@ -13,7 +13,8 @@ import {
 import { getRecent, type Scope } from "@/lib/painel/queries";
 import type { RecentRow } from "@/lib/painel/types";
 
-export type LoginState = { error: string | null };
+/** email volta no estado para o formulário não apagá-lo (o React 19 reseta o form após a action) */
+export type LoginState = { error: string | null; email?: string };
 
 const MAX_ATTEMPTS = 10;
 const WINDOW_MS = 15 * 60 * 1000;
@@ -34,16 +35,16 @@ function tooManyAttempts(key: string) {
 export async function login(_prev: LoginState, form: FormData): Promise<LoginState> {
   const email = String(form.get("email") ?? "").trim().toLowerCase().slice(0, 200);
   const password = String(form.get("senha") ?? "").slice(0, 200);
-  if (!email || !password) return { error: "Preencha e-mail e senha." };
+  if (!email || !password) return { error: "Preencha e-mail e senha.", email };
 
   const h = await headers();
   const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
   if (tooManyAttempts(ip) || tooManyAttempts(`e:${email}`)) {
-    return { error: "Muitas tentativas. Aguarde alguns minutos e tente de novo." };
+    return { error: "Muitas tentativas. Aguarde alguns minutos e tente de novo.", email };
   }
 
   const sql = getSql();
-  if (!sql) return { error: "O painel ainda não está conectado ao banco de dados." };
+  if (!sql) return { error: "O painel ainda não está conectado ao banco de dados.", email };
 
   let ok = false;
   try {
@@ -52,12 +53,12 @@ export async function login(_prev: LoginState, form: FormData): Promise<LoginSta
     ok = rows[0] ? await verifyPassword(password, rows[0].pass_hash) : false;
   } catch (err) {
     console.error("[painel] login", err instanceof Error ? err.message : err);
-    return { error: "Não foi possível entrar agora. Tente de novo em instantes." };
+    return { error: "Não foi possível entrar agora. Tente de novo em instantes.", email };
   }
-  if (!ok) return { error: "E-mail ou senha incorretos." };
+  if (!ok) return { error: "E-mail ou senha incorretos.", email };
 
   const token = sessionToken(email);
-  if (!token) return { error: "O painel ainda não está configurado (segredo de sessão ausente)." };
+  if (!token) return { error: "O painel ainda não está configurado (segredo de sessão ausente).", email };
 
   (await cookies()).set(SESSION_COOKIE, token, {
     httpOnly: true,

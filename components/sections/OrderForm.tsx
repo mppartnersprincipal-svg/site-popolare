@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ORDER_RULES, UNITS } from "@/data/business";
+import { MAIN_UNIT, ORDER_RULES } from "@/data/business";
 import { isValidOrderDate, minOrderDate } from "@/lib/businessDays";
 import type { OrderFields } from "@/lib/orderSchema";
 import { track } from "@/lib/tracking";
@@ -167,16 +167,13 @@ export function OrderForm({ headingLevel = "h2" }: OrderFormProps) {
                 />
                 {errorText("telefone")}
               </label>
-              <label className="text-sm font-semibold">
-                Retirar na unidade
-                <select name="unidade" defaultValue={UNITS[0].id} className={field}>
-                  {UNITS.map((u) => (
-                    <option key={u.id} value={u.id}>
-                      {u.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
+              <div className="text-sm font-semibold">
+                Retirada na loja
+                <p className={`${field} font-normal text-tinta-suave`}>
+                  {MAIN_UNIT.name} · {MAIN_UNIT.street}
+                </p>
+                <input type="hidden" name="unidade" value={MAIN_UNIT.id} />
+              </div>
               <label className="text-sm font-semibold">
                 Data de retirada
                 <input

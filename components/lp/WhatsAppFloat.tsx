@@ -1,7 +1,4 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import { UNITS } from "@/data/business";
+import { MAIN_UNIT } from "@/data/business";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 const MESSAGE = "Olá, Popolare! Vi o anúncio e quero comprar massas. Pode me ajudar?";
@@ -14,64 +11,22 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
-/**
- * Botão flutuante de WhatsApp com escolha da unidade (Setor Sul/Eldorado):
- * um toque abre o menu; o atendimento cai direto na loja mais conveniente.
- */
+/** Botão flutuante de WhatsApp da LP: abre direto o atendimento da loja do Setor Sul. */
 export function WhatsAppFloat() {
-  const [isOpen, setIsOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setIsOpen(false);
-    const onClick = (e: MouseEvent) => !rootRef.current?.contains(e.target as Node) && setIsOpen(false);
-    window.addEventListener("keydown", onKey);
-    document.addEventListener("click", onClick);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.removeEventListener("click", onClick);
-    };
-  }, [isOpen]);
-
   return (
-    <div ref={rootRef} className="fixed bottom-4 right-4 z-[60] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
-      {isOpen && (
-        <div id="wpp-unidades" role="menu" aria-label="Escolha a loja" className="w-64 animate-[surgir_0.35s_var(--ease-out-expo)_both] rounded-[1.25rem] bg-farinha p-2 shadow-2xl ring-1 ring-tinta/10">
-          <p className="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-tinta-suave">Falar com a loja</p>
-          {UNITS.map((u) => (
-            <a
-              key={u.id}
-              role="menuitem"
-              href={whatsappUrl(u, MESSAGE)}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-track="click_whatsapp"
-              data-track-local="lp-flutuante"
-              data-track-unidade={u.id}
-              className="flex items-center justify-between gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-creme"
-            >
-              <span>
-                <span className="block font-semibold text-tinta">{u.neighborhood}</span>
-                <span className="block text-xs text-tinta-suave">{u.whatsappDisplay}</span>
-              </span>
-              <WhatsAppIcon className="size-6 text-[#1f9e4f]" />
-            </a>
-          ))}
-        </div>
-      )}
-      <button
-        type="button"
-        onClick={() => setIsOpen((v) => !v)}
-        aria-expanded={isOpen}
-        aria-controls="wpp-unidades"
-        aria-label={isOpen ? "Fechar opções de WhatsApp" : "Pedir no WhatsApp"}
-        className="group relative flex items-center gap-2 rounded-full bg-[#1f9e4f] py-3 pl-3 pr-3 text-white shadow-[0_14px_36px_-10px_rgba(31,158,79,0.75)] transition-transform duration-300 hover:scale-105 sm:pr-5"
-      >
-        {!isOpen && <span aria-hidden className="absolute inset-0 -z-10 animate-ping rounded-full bg-[#1f9e4f]/40 [animation-duration:2.4s]" />}
-        <WhatsAppIcon className="size-8" />
-        <span className="hidden text-sm font-semibold sm:inline">{isOpen ? "Fechar" : "Pedir no WhatsApp"}</span>
-      </button>
-    </div>
+    <a
+      href={whatsappUrl(MAIN_UNIT, MESSAGE)}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-track="click_whatsapp"
+      data-track-local="lp-flutuante"
+      data-track-unidade={MAIN_UNIT.id}
+      aria-label="Pedir no WhatsApp"
+      className="group fixed bottom-4 right-4 z-[60] flex items-center gap-2 rounded-full bg-[#1f9e4f] py-3 pl-3 pr-3 text-white shadow-[0_14px_36px_-10px_rgba(31,158,79,0.75)] transition-transform duration-300 hover:scale-105 sm:bottom-6 sm:right-6 sm:pr-5"
+    >
+      <span aria-hidden className="absolute inset-0 -z-10 animate-ping rounded-full bg-[#1f9e4f]/40 [animation-duration:2.4s]" />
+      <WhatsAppIcon className="size-8" />
+      <span className="hidden text-sm font-semibold sm:inline">Pedir no WhatsApp</span>
+    </a>
   );
 }

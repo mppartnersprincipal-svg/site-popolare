@@ -25,7 +25,7 @@ export interface OpeningHours {
 }
 
 export interface StoreUnit {
-  id: "setor-sul" | "eldorado";
+  id: "setor-sul";
   name: string;
   street: string;
   neighborhood: string;
@@ -68,22 +68,7 @@ export const UNITS: readonly StoreUnit[] = [
     mapsUrl: directionsUrl("Popolare Massas e Empório, Rua 88, 402, Setor Sul, Goiânia - GO, 74085-010"),
     isMain: true,
   },
-  {
-    id: "eldorado",
-    name: "Popolare Eldorado",
-    street: "Rua das Orquídeas, 1864",
-    neighborhood: "Eldorado",
-    phones: ["(62) 99819-1201"],
-    whatsapp: "5562998191201",
-    whatsappDisplay: "(62) 99819-1201",
-    // Coordenadas aproximadas do bairro Eldorado — confirmar com o Google Business Profile
-    geo: { lat: -16.6474, lng: -49.3253 },
-    geoVerified: false,
-    // Confirmado pelo cliente: 09h–19h. TODO(cliente): confirmar se abre aos sábados
-    hours: [{ days: "Segunda a sexta", schemaDays: WEEKDAYS, opens: "09:00", closes: "19:00" }],
-    mapsUrl: directionsUrl("Popolare, Rua das Orquídeas, 1864, Eldorado, Goiânia - GO"),
-    isMain: false,
-  },
+  // A unidade Eldorado (Rua das Orquídeas, 1864) foi fechada — removida em 19/10/2026
 ];
 
 export const MAIN_UNIT = UNITS.find((u) => u.isMain) ?? UNITS[0];

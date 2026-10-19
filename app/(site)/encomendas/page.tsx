@@ -7,7 +7,7 @@ import { HowToCook } from "@/components/sections/HowToCook";
 
 export const metadata: Metadata = pageMetadata({
   title: "Encomendas no seu refratário",
-  description: "Encomende massas artesanais para almoços e eventos. Montamos no seu refratário, com 2 dias úteis de antecedência. Setor Sul e Eldorado.",
+  description: "Encomende massas artesanais para almoços e eventos. Montamos no seu refratário, com 2 dias úteis de antecedência. Retirada no Setor Sul.",
   path: "/encomendas",
 });
 

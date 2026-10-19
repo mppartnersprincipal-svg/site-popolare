@@ -1,6 +1,6 @@
 // Conteúdo da LP de campanha (/massas-em-goiania) — termos de compra com "Goiânia" para SEO local
 // e Índice de Qualidade do Google Ads. Fonte única para a página, o FAQPage e o llms.txt.
-import { BRAND, ORDER_RULES, UNITS } from "./business";
+import { BRAND, MAIN_UNIT, ORDER_RULES, formatAddress } from "./business";
 import type { FaqItem } from "./content";
 
 export const LP_PATH = "/massas-em-goiania";
@@ -8,7 +8,7 @@ export const LP_PATH = "/massas-em-goiania";
 export const LP_SEO = {
   title: "Massas em Goiânia — massas artesanais congeladas",
   description:
-    "Compre massas artesanais congeladas em Goiânia: sfogliatti, lasanhas, canelones e ravióli sem conservantes. Lojas no Setor Sul e Eldorado. Peça no WhatsApp.",
+    "Compre massas artesanais congeladas em Goiânia: sfogliatti, lasanhas, canelones e ravióli sem conservantes. Loja no Setor Sul. Peça no WhatsApp.",
   keywords: [
     "massas em Goiânia",
     "massas congeladas Goiânia",
@@ -26,7 +26,7 @@ export const LP_HERO = {
   title: "Massas artesanais congeladas em Goiânia",
   subtitle:
     "Sfogliatti, lasanhas, canelones, ravióli e nhoque feitos à mão por uma família italiana. Sem conservantes, prontos para ir do congelador ao forno.",
-  bullets: ["Feito à mão em Goiânia", "Sem conservantes", "Retire no Setor Sul ou no Eldorado"],
+  bullets: ["Feito à mão em Goiânia", "Sem conservantes", "Retire na loja do Setor Sul"],
 };
 
 export const LP_BENEFITS = [
@@ -48,12 +48,10 @@ export const LP_PRODUCTS = [
   "tiramisu",
 ] as const;
 
-const bairros = UNITS.map((u) => u.neighborhood).join(" e no ");
-
 export const LP_FAQ: readonly FaqItem[] = [
   {
     question: "Onde comprar massas artesanais em Goiânia?",
-    answer: `Nas lojas da ${BRAND.name}, no ${bairros}. Também dá para pedir pelo WhatsApp e retirar na loja.`,
+    answer: `Na loja da ${BRAND.name}, na ${formatAddress(MAIN_UNIT)}. Também dá para pedir pelo WhatsApp e retirar na loja.`,
   },
   {
     question: "As massas congeladas da Popolare têm conservantes?",

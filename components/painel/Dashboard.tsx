@@ -69,7 +69,7 @@ async function Overview({ range }: { range: Range }) {
         />
       ) : null}
       <div className="grid gap-4 lg:grid-cols-3">
-        <div className="lg:col-span-2">
+        <div className="min-w-0 lg:col-span-2">
           <ChartCard id="visitas" title="Visitas por dia" description="Visitas (área) e pedidos — WhatsApp, telefone e encomenda (linha verde)" className="h-full">
             {hasData ? <DailyAreaChart data={daily} /> : <EmptyState compact hint="" />}
           </ChartCard>

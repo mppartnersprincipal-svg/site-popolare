@@ -25,21 +25,25 @@ describe("whatsapp", () => {
 
   test("unidade desconhecida cai na unidade principal", () => {
     expect(unitById("inexistente").id).toBe("setor-sul");
-    expect(unitById("eldorado").whatsapp).toBe("5562998191201");
+    expect(unitById("eldorado").id).toBe("setor-sul");
+  });
+
+  test("Eldorado não aparece mais como unidade", () => {
+    expect(UNITS.map((u) => u.id)).toEqual(["setor-sul"]);
   });
 
   test("mensagem de encomenda formata data e refratário", () => {
     const msg = orderMessage({
       nome: "Ana",
       telefone: "(62) 99999-0000",
-      unidade: "eldorado",
+      unidade: "setor-sul",
       data: "2026-10-20",
       itens: "2 lasanhas bolonhesa",
       refratario: true,
       observacoes: "  sem cebola  ",
     });
     expect(msg).toContain("20/10/2026");
-    expect(msg).toContain("Popolare Eldorado");
+    expect(msg).toContain("Popolare Setor Sul");
     expect(msg).toContain("refratário: Sim");
     expect(msg).toContain("Observações: sem cebola");
   });

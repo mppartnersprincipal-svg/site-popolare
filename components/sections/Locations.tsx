@@ -16,27 +16,21 @@ export function Locations({ headingLevel = "h2" }: LocationsProps) {
           Dove siamo
         </p>
         <Heading id="lojas-titulo" data-reveal className="mt-4 text-[length:var(--text-display)] leading-[1.02]">
-          <span className="font-display uppercase tracking-[0.03em]">Duas casas </span>
+          <span className="font-display uppercase tracking-[0.03em]">Nossa casa </span>
           <span className="italiano text-primaria">em Goiânia.</span>
         </Heading>
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
+        <div className="mt-14 grid max-w-3xl gap-8">
           {UNITS.map((unit) => (
             <article key={unit.id} data-reveal className="flex flex-col overflow-hidden rounded-[1.75rem] bg-farinha shadow-[0_30px_70px_-50px_rgba(89,14,19,0.6)]">
               <div className="relative aspect-[16/9] overflow-hidden">
-                {unit.isMain ? (
-                  <Picture
-                    image="loja/fachada"
-                    alt="Fachada da Popolare no Setor Sul: letreiro vermelho, tijolinho e toldo listrado"
-                    sizes="(min-width: 1024px) 45vw, 92vw"
-                    className="block h-full w-full"
-                    imgClassName="h-full w-full object-cover object-[50%_30%]"
-                  />
-                ) : (
-                  <div className="flex h-full items-center justify-center bg-primaria">
-                    <p className="italiano text-6xl text-massa">Eldorado</p>
-                  </div>
-                )}
+                <Picture
+                  image="loja/fachada"
+                  alt="Fachada da Popolare no Setor Sul: letreiro vermelho, tijolinho e toldo listrado"
+                  sizes="(min-width: 1024px) 48rem, 92vw"
+                  className="block h-full w-full"
+                  imgClassName="h-full w-full object-cover object-[50%_30%]"
+                />
               </div>
               <div className="flex flex-1 flex-col p-7 md:p-9">
                 <SubHeading className="italiano text-4xl text-tinta">{unit.name}</SubHeading>

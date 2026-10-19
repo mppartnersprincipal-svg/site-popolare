@@ -11,7 +11,7 @@ Site institucional imersivo (intro 3D → hero em arco → scroll "entrando na l
 | Cliente | Popolare Massas e Empório (Carina Popolare) |
 | Segmento | Alimentação — massas artesanais congeladas + empório italiano |
 | Objetivo | Pedido via WhatsApp, visita à loja (rota), encomendas; SEO local + GEO |
-| WhatsApp | Setor Sul (62) 3945-6633 · Eldorado (62) 99819-1201 |
+| WhatsApp | Setor Sul (62) 3945-6633 (loja única — o Eldorado fechou em out/2026) |
 | URL de produção | https://loja.popolare.com.br (popolare.com.br segue com o WordPress antigo, por decisão da cliente) |
 
 ## Stack
@@ -62,7 +62,7 @@ Tamanhos com variável CSS no Tailwind 4: use `text-[length:var(--x)]` (sem `len
 ## SEO / GEO
 
 - Metadata por página + canonical; 1 `h1` por página; OG estática `app/opengraph-image.jpg`
-- JSON-LD: Organization, WebSite, 2× FoodEstablishment/Store, Menu (sem preços), FAQPage, BreadcrumbList, Article
+- JSON-LD: Organization, WebSite, FoodEstablishment/Store, Menu (sem preços), FAQPage, BreadcrumbList, Article
 - `app/sitemap.ts`, `app/robots.ts` (libera GPTBot, ClaudeBot, PerplexityBot, Google-Extended…), `/llms.txt` e `/llms-full.txt`
 - Redirects permanentes das URLs do WordPress em `next.config.ts` (posts → `/blog/<slug>`, `/nossas-massas` → `/cardapio`, sitemaps antigos)
 
@@ -93,13 +93,13 @@ npx tsc --noEmit
 
 ## Pendências do cliente (ver `TODO(cliente)` no código)
 
-Ano de fundação (1992 × 1994) · Eldorado abre aos sábados? (seg–sex 9h–19h confirmado) · CEP do Eldorado · coordenadas exatas das lojas · links das matérias Hora Extra/Giro Goiás · nomes de fotos ("Manicaretti Verde" e qual foto da pasta "Raviolli de Carne - 3 queijos - Brie" é de cada sabor; o Drive do cliente não expõe essas fotos ao conector) · vídeo real da fachada · IDs de GTM/GA4/Meta · texto da política de privacidade.
+Ano de fundação (1992 × 1994) · coordenadas exatas da loja · links das matérias Hora Extra/Giro Goiás · nomes de fotos ("Manicaretti Verde" e qual foto da pasta "Raviolli de Carne - 3 queijos - Brie" é de cada sabor; o Drive do cliente não expõe essas fotos ao conector) · vídeo real da fachada · IDs de GTM/GA4/Meta · texto da política de privacidade.
 
 Resolvidas (14/10/2026): Instagram oficial = @popolaremassas · preços não aparecem no site · horário do Eldorado 9h–19h.
 
 ## LP de campanha (Google Ads)
 
-`/massas-em-goiania` (`app/(site)/massas-em-goiania/page.tsx`, conteúdo em `data/lp.ts`): página leve (sem intro/3D/vídeo), 5 dobras com CTA (hero · produtos [carrossel no mobile] · diferenciais · lojas · FAQ+CTA final), WhatsApp flutuante com escolha de unidade (`components/lp/WhatsAppFloat.tsx`, evento `click_whatsapp` local `lp-flutuante`). FAQPage + Breadcrumb próprios; no sitemap com prioridade 0.9. `gclid/gbraid/wbraid` são capturados junto das UTMs e vão em todos os eventos. GSAP/Lenis do layout carregam sob demanda (não entram no bundle inicial).
+`/massas-em-goiania` (`app/(site)/massas-em-goiania/page.tsx`, conteúdo em `data/lp.ts`): página leve (sem intro/3D/vídeo), 5 dobras com CTA (hero · produtos [carrossel no mobile] · diferenciais · lojas · FAQ+CTA final), WhatsApp flutuante com link direto para o Setor Sul (`components/lp/WhatsAppFloat.tsx`, evento `click_whatsapp` local `lp-flutuante`). FAQPage + Breadcrumb próprios; no sitemap com prioridade 0.9. `gclid/gbraid/wbraid` são capturados junto das UTMs e vão em todos os eventos. GSAP/Lenis do layout carregam sob demanda (não entram no bundle inicial).
 
 ## LGPD
 
@@ -123,6 +123,7 @@ Produção: **https://loja.popolare.com.br** (desde 19/10/2026). A cliente quis 
 
 ## Histórico
 
+- 2026-10-19 — unidade Eldorado removida (fechou): só o Setor Sul em UI, JSON-LD, llms, LP, formulário (retirada fixa) e WhatsApp flutuante (link direto). O painel mantém o rótulo "Eldorado (encerrada)" para eventos antigos.
 - 2026-10-14 — sem preços no site; Instagram e horário do Eldorado; botão "Trocar massa" no hero; LP `/massas-em-goiania` para Google Ads.
 - 2026-10-14 — cardápio: +6 fotos novas (involtino, tortelli, rondelli de muçarela, molho ao sugo, alla panna, brodo — Drive `2026/EMPÓRIO POPOLARE - FEV-26`) e itens "ao sugo" reaproveitando a foto do produto base. Ainda sem foto no Drive: sfoglia, agnolotti giallo, sfogliatti carne seca, sfogliattini pera, rondelli sem lactose, lasanha de berinjela, fettuccine verde, pappardelle (2), cappelletti de carne, salsa bianca, ragù, quattro formaggi.
 - 2026-10-14 — fotos da Carina (pasta "Fotos da Carina" do Drive) em 5 pontos do site + `employee.image` no JSON-LD.

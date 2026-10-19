@@ -18,7 +18,7 @@ export function LoginForm() {
         <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-tinta">
           E-mail
         </label>
-        <input id="email" name="email" type="email" autoComplete="email" required className={input} placeholder="voce@email.com" />
+        <input id="email" name="email" type="email" autoComplete="email" required defaultValue={state.email} className={input} placeholder="voce@email.com" />
       </div>
       <div>
         <label htmlFor="senha" className="mb-1.5 block text-sm font-semibold text-tinta">

@@ -50,7 +50,7 @@ function PivotTable({ title, data, colLabel }: { title: string; data: ReturnType
   if (!data.rows.length) return null;
   const max = Math.max(...data.rows.map((r) => r.total));
   return (
-    <div>
+    <div className="min-w-0">
       <h3 className="mb-2 text-sm font-bold text-tinta">{title}</h3>
       <DataTable
         dense

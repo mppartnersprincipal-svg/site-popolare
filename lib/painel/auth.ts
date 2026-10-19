@@ -2,6 +2,7 @@ import "server-only";
 import { createHmac, scrypt as scryptCb, timingSafeEqual } from "node:crypto";
 import { promisify } from "node:util";
 import { cookies } from "next/headers";
+import { connection } from "next/server";
 import { redirect } from "next/navigation";
 import { getSql } from "@/lib/painel/db";
 
@@ -72,6 +73,8 @@ function readToken(token: string | undefined): string | null {
 
 /** Usuário logado ou null. Confere no banco a cada request (remover o usuário revoga o acesso). */
 export async function getUser(): Promise<PainelUser | null> {
+  // Sessão é por request (relógio + cookie): nunca entra no prerender da casca
+  await connection();
   const email = readToken((await cookies()).get(SESSION_COOKIE)?.value);
   const sql = getSql();
   if (!email || !sql) return null;

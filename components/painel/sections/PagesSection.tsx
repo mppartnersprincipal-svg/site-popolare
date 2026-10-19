@@ -48,12 +48,12 @@ export async function PagesSection({ range }: { range: Range }) {
   const rows = await getTopPages(range, 12);
   return (
     <div className="grid gap-4 lg:grid-cols-5">
-      <div className="lg:col-span-2">
+      <div className="min-w-0 lg:col-span-2">
         <ChartCard id="paginas" title="Páginas mais vistas" description="Top 10 por visualizações" className="h-full">
           <HorizontalBars valueLabel="Visualizações" data={rows.map((p) => ({ name: labelPage(p.path, p.title), value: p.views }))} />
         </ChartCard>
       </div>
-      <div className="lg:col-span-3">
+      <div className="min-w-0 lg:col-span-3">
         <ChartCard id="paginas-tempo" title="Tempo e leitura por página" description="Quanto tempo o visitante fica e até onde rola" className="h-full">
           {rows.length ? <PagesTable rows={rows} /> : <EmptyState compact hint="" />}
         </ChartCard>

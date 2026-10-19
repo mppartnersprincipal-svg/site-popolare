@@ -135,7 +135,11 @@ export const BUTTON_LABELS: Record<ButtonKind, string> = {
   form_submit: "Encomenda",
 };
 
-const UNIT_LABELS: Record<string, string> = Object.fromEntries(UNITS.map((u) => [u.id, u.name.replace(/^Popolare /, "")]));
+const UNIT_LABELS: Record<string, string> = {
+  // Unidade fechada em out/2026 — mantém o rótulo para eventos antigos do painel
+  eldorado: "Eldorado (encerrada)",
+  ...Object.fromEntries(UNITS.map((u) => [u.id, u.name.replace(/^Popolare /, "")])),
+};
 const PRODUCT_LABELS: Record<string, string> = Object.fromEntries(MENU.map((m) => [m.id, m.namePt]));
 const CATEGORY_LABELS: Record<string, string> = Object.fromEntries(CATEGORIES.map((c) => [c.id, c.namePt]));
 const PASTA_LABELS: Record<string, string> = {

@@ -6,15 +6,15 @@ import { Locations } from "@/components/sections/Locations";
 import { Faq } from "@/components/sections/Faq";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Lojas e contato em Goiânia",
-  description: "Endereços, telefones, WhatsApp e horários das lojas Popolare em Goiânia: Rua 88, 402, Setor Sul, e Rua das Orquídeas, 1864, Eldorado.",
+  title: "Loja e contato em Goiânia",
+  description: "Endereço, telefones, WhatsApp e horários da loja Popolare em Goiânia: Rua 88, 402, Setor Sul.",
   path: "/contato",
 });
 
 export default function ContatoPage() {
   return (
     <div className="pt-16 md:pt-20">
-      <JsonLd data={breadcrumbSchema([{ name: "Lojas e contato", path: "/contato" }])} />
+      <JsonLd data={breadcrumbSchema([{ name: "Loja e contato", path: "/contato" }])} />
       <Locations headingLevel="h1" />
       <Faq />
     </div>

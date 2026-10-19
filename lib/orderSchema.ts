@@ -9,7 +9,7 @@ export const orderSchema = z.object({
     .string()
     .transform((v) => v.replace(/\D/g, ""))
     .refine((v) => PHONE_DIGITS.test(v), "Informe um telefone com DDD"),
-  unidade: z.enum(["setor-sul", "eldorado"]),
+  unidade: z.enum(["setor-sul"]),
   data: z.string().min(1, "Escolha a data de retirada"),
   itens: z.string().trim().min(3, "Conte o que você quer encomendar").max(600, "Resuma o pedido em até 600 caracteres"),
   refratario: z.boolean(),

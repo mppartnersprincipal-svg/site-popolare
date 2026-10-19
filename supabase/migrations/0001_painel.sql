@@ -1,7 +1,7 @@
 -- ============================================================
 -- Painel /painel — analytics first-party da Popolare
--- Projeto Supabase compartilhado "Interface Google Ads Automate"
--- (kzvkejuzglhwwhphhquv). Tudo fica no schema `popolare`, fora da API
+-- Projeto Supabase compartilhado "Meta-Ads-Inteligence"
+-- (rylxisgblhhzbsuslitf). Tudo fica no schema `popolare`, fora da API
 -- REST (só `public` é exposto), e o site acessa com a role `popolare_app`
 -- (criada fora deste arquivo, com senha SCRAM gerada localmente).
 -- Baseado nas migrations 0003–0005 do site da Sólida, adaptado aos eventos

@@ -17,7 +17,7 @@ export function ChartCard({
   children: React.ReactNode;
 }) {
   return (
-    <section className={cn("scroll-mt-32", className)} aria-labelledby={id}>
+    <section className={cn("min-w-0 scroll-mt-32", className)} aria-labelledby={id}>
       <div className="flex h-full flex-col rounded-2xl border border-tinta/10 bg-white">
         <div className="flex flex-wrap items-start justify-between gap-4 border-b border-tinta/10 px-5 py-4">
           <div>
