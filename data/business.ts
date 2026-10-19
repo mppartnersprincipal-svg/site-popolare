@@ -1,7 +1,7 @@
 // Fonte única de NAP (nome, endereço, telefone), horários e redes.
 // Usada pela UI, JSON-LD, llms.txt e mensagens de WhatsApp.
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://popolare.com.br").replace(/\/+$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://loja.popolare.com.br").replace(/\/+$/, "");
 
 export const BRAND = {
   name: "Popolare Massas e Empório",

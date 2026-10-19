@@ -46,9 +46,10 @@ const nextConfig: NextConfig = {
     return [
       { source: "/:path*", headers: SECURITY_HEADERS },
       {
-        // Previews e *.vercel.app não devem ser indexados (só o domínio oficial)
+        // Previews e *.vercel.app não devem ser indexados (só o subdomínio oficial;
+        // popolare.com.br continua com o WordPress antigo, por decisão da cliente)
         source: "/:path*",
-        missing: [{ type: "host", value: "(www\\.)?popolare\\.com\\.br" }],
+        missing: [{ type: "host", value: "loja\\.popolare\\.com\\.br" }],
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
       {

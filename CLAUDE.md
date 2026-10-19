@@ -2,7 +2,7 @@
 
 # Site — Popolare Massas e Empório
 
-Site institucional imersivo (intro 3D → hero em arco → scroll "entrando na loja" → vitrine 3D → catálogo) para a Popolare, fábrica/loja de massas italianas artesanais em Goiânia. Substitui o WordPress antigo (popolare.com.br, Cerrado Propaganda).
+Site institucional imersivo (intro 3D → hero em arco → scroll "entrando na loja" → vitrine 3D → catálogo) para a Popolare, fábrica/loja de massas italianas artesanais em Goiânia. Convive com o WordPress antigo (popolare.com.br, Cerrado Propaganda), que a cliente quis manter no domínio raiz.
 
 ## Cliente
 
@@ -12,7 +12,7 @@ Site institucional imersivo (intro 3D → hero em arco → scroll "entrando na l
 | Segmento | Alimentação — massas artesanais congeladas + empório italiano |
 | Objetivo | Pedido via WhatsApp, visita à loja (rota), encomendas; SEO local + GEO |
 | WhatsApp | Setor Sul (62) 3945-6633 · Eldorado (62) 99819-1201 |
-| URL de produção | popolare.com.br (domínio gerido pelo Pedro) |
+| URL de produção | https://loja.popolare.com.br (popolare.com.br segue com o WordPress antigo, por decisão da cliente) |
 
 ## Stack
 
@@ -98,7 +98,9 @@ Repositório: https://github.com/mppartnersprincipal-svg/site-popolare (branch `
 
 Se `vercel deploy` falhar com "fetch failed"/"Not authorized" no upload, use `vercel deploy --prod --yes --archive=tgz`.
 
-Vercel, projeto `popolare-site` → https://popolare-site.vercel.app (envia `X-Robots-Tag: noindex` em qualquer host ≠ popolare.com.br). Domínio do cliente só após aprovação do Pedro; ao apontar o domínio, configurar `NEXT_PUBLIC_SITE_URL` e `NEXT_PUBLIC_GTM_ID` na Vercel.
+Vercel, projeto `popolare-site` → https://popolare-site.vercel.app (envia `X-Robots-Tag: noindex` em qualquer host ≠ loja.popolare.com.br).
+
+Produção: **https://loja.popolare.com.br** (desde 19/10/2026). A cliente quis manter o WordPress antigo em popolare.com.br, então o site novo vive no subdomínio: CNAME `loja` → `fb446e8bd2ee492a.vercel-dns-017.com.` no Editor de Zona do cPanel (HostGator, NS cerrado360). Não usar a ferramenta "Subdomínios" do cPanel (cria A para a hospedagem antiga). LP do Google Ads: `/massas-em-goiania`. Se o host mudar, atualizar o fallback de `SITE_URL` em `data/business.ts` e o regex do noindex em `next.config.ts`. `NEXT_PUBLIC_GTM_ID` ainda precisa ser configurado na Vercel.
 
 ## Pontos conhecidos
 
