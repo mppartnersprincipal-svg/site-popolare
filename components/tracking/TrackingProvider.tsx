@@ -4,11 +4,14 @@ import { UTMCapture } from "./UTMCapture";
 import { ConsentBanner } from "./ConsentBanner";
 import { CONSENT_DEFAULT_SCRIPT } from "@/lib/consent";
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+// Container da Popolare (ID público). Previews e dev não carregam o GTM, para não sujar o GA4/Ads.
+const POPOLARE_GTM_ID = "GTM-MJCKV4JS";
+const GTM_ID =
+  process.env.NEXT_PUBLIC_GTM_ID ?? (process.env.VERCEL_ENV === "production" ? POPOLARE_GTM_ID : undefined);
 
 /**
  * GTM central: GA4, conversões do Google Ads e Meta Pixel são tags dentro do container.
- * Sem NEXT_PUBLIC_GTM_ID (dev/preview) os eventos continuam indo para window.dataLayer.
+ * Sem GTM_ID (dev/preview) os eventos continuam indo para window.dataLayer.
  * O padrão do Consent Mode v2 (negado) roda no mesmo script, antes do GTM carregar.
  */
 export function TrackingProvider() {

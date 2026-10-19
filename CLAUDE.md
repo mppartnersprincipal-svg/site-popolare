@@ -100,7 +100,7 @@ Se `vercel deploy` falhar com "fetch failed"/"Not authorized" no upload, use `ve
 
 Vercel, projeto `popolare-site` → https://popolare-site.vercel.app (envia `X-Robots-Tag: noindex` em qualquer host ≠ loja.popolare.com.br).
 
-Produção: **https://loja.popolare.com.br** (desde 19/10/2026). A cliente quis manter o WordPress antigo em popolare.com.br, então o site novo vive no subdomínio: CNAME `loja` → `fb446e8bd2ee492a.vercel-dns-017.com.` no Editor de Zona do cPanel (HostGator, NS cerrado360). Não usar a ferramenta "Subdomínios" do cPanel (cria A para a hospedagem antiga). LP do Google Ads: `/massas-em-goiania`. Se o host mudar, atualizar o fallback de `SITE_URL` em `data/business.ts` e o regex do noindex em `next.config.ts`. `NEXT_PUBLIC_GTM_ID` ainda precisa ser configurado na Vercel.
+Produção: **https://loja.popolare.com.br** (desde 19/10/2026). A cliente quis manter o WordPress antigo em popolare.com.br, então o site novo vive no subdomínio: CNAME `loja` → `fb446e8bd2ee492a.vercel-dns-017.com.` no Editor de Zona do cPanel (HostGator, NS cerrado360). Não usar a ferramenta "Subdomínios" do cPanel (cria A para a hospedagem antiga). LP do Google Ads: `/massas-em-goiania`. Se o host mudar, atualizar o fallback de `SITE_URL` em `data/business.ts` e o regex do noindex em `next.config.ts`. Tracking: GTM `GTM-MJCKV4JS` fixo em `TrackingProvider.tsx` (só carrega com `VERCEL_ENV=production`; `NEXT_PUBLIC_GTM_ID` sobrescreve). No container: Google tag GA4 `G-9K3RYMGLS7`, evento GA4 genérico (`{{Event}}` + parâmetros do dataLayer) e conversão do Google Ads `AW-18514930194` no `click_whatsapp`. Arquivo de importação: `../GTM-Popolare-importar.json`.
 
 ## Pontos conhecidos
 
