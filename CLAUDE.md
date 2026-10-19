@@ -70,6 +70,19 @@ Tamanhos com variável CSS no Tailwind 4: use `text-[length:var(--x)]` (sem `len
 
 GTM via `components/tracking/TrackingProvider.tsx` (`NEXT_PUBLIC_GTM_ID`). Cliques: qualquer elemento com `data-track="<evento>"` (+ `data-track-*` como parâmetros). Automáticos: `scroll_25/50/75/100`, `section_view` (`data-section`). Específicos: `intro_pasta_select`, `catalog_filter`, `form_submit`. UTMs da URL de entrada vão em todos os eventos. GA4/Ads/Meta Pixel são tags dentro do GTM (skill `lp-tracking-dashboard`).
 
+## Painel `/painel` (métricas próprias — 19/10/2026)
+
+Portado do dashboard da Sólida (`../../Site - Sólida Transporte/solida-site`, fases D1–D4 + Google Ads), com diferenças decididas pelo Pedro:
+
+- **Dois painéis separados pela página de ENTRADA da visita**: `/painel/lp` (entrou por `/massas-em-goiania`, a LP dos anúncios — inclui Google Ads e Campanhas/UTM) e `/painel/site` (home e demais páginas — inclui páginas, blog e massa escolhida na intro). Filtro `p_scope` (`popolare.in_scope`) em todas as funções SQL.
+- **Banco**: schema isolado `popolare` no projeto Supabase compartilhado **Meta-Ads-Inteligence** (`rylxisgblhhzbsuslitf`) — escolha do Pedro para não pagar projeto novo. O site NUNCA usa a service role nem o Supabase Auth de lá: conecta pelo pooler (porta 6543) com a role própria `popolare_app` (`lib/painel/db.ts`, `postgres` com `prepare:false`), que só tem `usage` no schema `popolare`, `select/insert` em sessions/events, leitura dos usuários e `execute` nas agregações. SQL em `supabase/migrations/0001_painel.sql` (testado em PGlite com seed e checagem de permissões). Senha da role definida por verificador SCRAM gerado localmente (`../painel-acesso.sql`, fora do Git).
+- **Login próprio** (`lib/painel/auth.ts`): `popolare.dashboard_users` com scrypt; cookie `popolare_painel` (HMAC-SHA256, `PAINEL_SESSION_SECRET`, 7 dias, `path=/painel`); `proxy.ts` só redireciona quem não tem cookie — a validação real roda em `requireUser()` dentro do `<Suspense>` (exigência do `cacheComponents`). Rate limit de login em memória. Acessos em `../ACESSO-PAINEL.txt` (fora do Git).
+- **Coleta** (`lib/tracker.ts` + `components/tracking/Collector.tsx` + `app/api/collect/route.ts`): page_view/page_leave (tempo visível e rolagem), todo clique, e todo `track()` (exceto `scroll_*`) via `collect()`; `cookie_consent` sai do `updateConsent`. Anônimo (sessão em sessionStorage; visitante novo × recorrente em localStorage `popolare_v`, apagado se recusar cookies). Conversões do painel: `click_whatsapp`, `click_phone`, `form_submit` (`popolare.is_conversion`).
+- **Google Ads**: `lib/painel/google-ads-api.ts` (só leitura, REST v25) com as credenciais OAuth da MCC (as mesmas da Sólida); conta Popolare `652-370-3488`.
+- **Env (Vercel → Production)**: `POPOLARE_DATABASE_URL`, `PAINEL_SESSION_SECRET`, `GOOGLE_ADS_CUSTOMER_ID/DEVELOPER_TOKEN/CLIENT_ID/CLIENT_SECRET/REFRESH_TOKEN/LOGIN_CUSTOMER_ID/API_VERSION`. Sem elas o site funciona igual (coleta descartada, painel avisa que não está conectado).
+- Estrutura: o site foi para o route group `app/(site)/` (layout com Header/Footer/GTM/Lenis); o layout raiz só tem html/fontes; `app/not-found.tsx` traz Header/Footer porque fica fora do grupo. `/painel` fica fora do robots e com `X-Robots-Tag: noindex`.
+- **UTMs** (padrão para as campanhas, para GA4/Ads/painel baterem): `utm_source=google&utm_medium=cpc&utm_campaign=<slug-da-campanha>&utm_content=<slug-do-grupo>&utm_term={keyword}` no "Sufixo do URL final" de cada grupo de anúncios; marcação automática (gclid) ligada. O painel identifica Ads pelo gclid; as UTMs dão nome à campanha/grupo. `utm_term` com `{keyword}` cru = teste → conta como Direto.
+
 ## Comandos
 
 ```bash
@@ -86,7 +99,7 @@ Resolvidas (14/10/2026): Instagram oficial = @popolaremassas · preços não apa
 
 ## LP de campanha (Google Ads)
 
-`/massas-em-goiania` (`app/massas-em-goiania/page.tsx`, conteúdo em `data/lp.ts`): página leve (sem intro/3D/vídeo), 5 dobras com CTA (hero · produtos [carrossel no mobile] · diferenciais · lojas · FAQ+CTA final), WhatsApp flutuante com escolha de unidade (`components/lp/WhatsAppFloat.tsx`, evento `click_whatsapp` local `lp-flutuante`). FAQPage + Breadcrumb próprios; no sitemap com prioridade 0.9. `gclid/gbraid/wbraid` são capturados junto das UTMs e vão em todos os eventos. GSAP/Lenis do layout carregam sob demanda (não entram no bundle inicial).
+`/massas-em-goiania` (`app/(site)/massas-em-goiania/page.tsx`, conteúdo em `data/lp.ts`): página leve (sem intro/3D/vídeo), 5 dobras com CTA (hero · produtos [carrossel no mobile] · diferenciais · lojas · FAQ+CTA final), WhatsApp flutuante com escolha de unidade (`components/lp/WhatsAppFloat.tsx`, evento `click_whatsapp` local `lp-flutuante`). FAQPage + Breadcrumb próprios; no sitemap com prioridade 0.9. `gclid/gbraid/wbraid` são capturados junto das UTMs e vão em todos os eventos. GSAP/Lenis do layout carregam sob demanda (não entram no bundle inicial).
 
 ## LGPD
 

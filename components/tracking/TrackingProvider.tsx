@@ -1,6 +1,7 @@
 import Script from "next/script";
 import { TrackingEvents } from "./TrackingEvents";
 import { UTMCapture } from "./UTMCapture";
+import { Collector } from "./Collector";
 import { ConsentBanner } from "./ConsentBanner";
 import { CONSENT_DEFAULT_SCRIPT } from "@/lib/consent";
 
@@ -37,6 +38,7 @@ export function TrackingProvider() {
       )}
       <UTMCapture />
       <TrackingEvents />
+      <Collector />
     </>
   );
 }

@@ -1,4 +1,5 @@
 // Helpers de dataLayer (GTM). Todas as tags (GA4, Google Ads, Meta Pixel) são configuradas no GTM.
+import { collect } from "@/lib/tracker";
 
 export type TrackingEvent =
   | "click_whatsapp"
@@ -48,4 +49,6 @@ export function track(event: TrackingEvent, params: EventParams = {}): void {
   if (typeof window === "undefined") return;
   window.dataLayer = window.dataLayer ?? [];
   window.dataLayer.push({ event, ...readUtms(), ...params });
+  // Medição própria do /painel (scroll_* fica de fora: o coletor já mede o scroll por página)
+  if (!event.startsWith("scroll_")) collect(event, params);
 }

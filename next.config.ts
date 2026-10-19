@@ -53,6 +53,11 @@ const nextConfig: NextConfig = {
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
       {
+        // painel privado: fora dos buscadores mesmo no domínio oficial
+        source: "/painel/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
         // nomes sem hash: cache longo com revalidação, para trocas de foto/logo aparecerem
         source: "/:dir(img|frames|brand)/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }],

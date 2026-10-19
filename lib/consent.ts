@@ -1,4 +1,5 @@
 // Consent Mode v2 (Google) para LGPD: tudo negado até o visitante escolher no ConsentBanner.
+import { collect, CONSENT_EVENT } from "@/lib/tracker";
 
 export const CONSENT_KEY = "popolare_consent";
 
@@ -32,4 +33,7 @@ export function updateConsent(choice: Exclude<ConsentChoice, null>): void {
     ad_personalization: value,
   });
   window.dataLayer?.push({ event: "consent_update", consentimento: choice });
+  // Painel: cobertura de consentimento + apagar o código de visitante de quem recusou
+  collect("cookie_consent", { consent_choice: choice === "granted" ? "accepted" : "essential" });
+  window.dispatchEvent(new Event(CONSENT_EVENT));
 }

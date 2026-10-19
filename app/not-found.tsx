@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { LogoSimbolo } from "@/components/ui/Logo";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
+// Fica no layout raiz (fora do grupo (site)), então traz o cabeçalho e o rodapé
 export default function NotFound() {
   return (
+    <>
+      <Header />
+      <main id="conteudo">
     <section className="container-popolare flex min-h-[80svh] flex-col items-center justify-center pt-24 text-center">
       <LogoSimbolo className="h-16 w-auto text-primaria" />
       <p className="eyebrow mt-8 text-madeira-escura">Errore 404</p>
@@ -17,5 +23,8 @@ export default function NotFound() {
         </Link>
       </div>
     </section>
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -1,12 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope, Marcellus } from "next/font/google";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { SmoothScroll } from "@/components/experience/SmoothScroll";
-import { ScrollReveals } from "@/components/experience/ScrollReveals";
-import { TrackingProvider } from "@/components/tracking/TrackingProvider";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { organizationSchema, storeSchemas, websiteSchema } from "@/lib/schema";
 import { BRAND, SITE_URL } from "@/data/business";
 import "./globals.css";
 
@@ -69,22 +62,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="pt-BR" suppressHydrationWarning className={`${marcellus.variable} ${cormorant.variable} ${manrope.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: BOOT_SCRIPT }} />
-        <JsonLd data={[organizationSchema(), websiteSchema(), ...storeSchemas()]} />
       </head>
-      <body className="grao min-h-dvh">
-        <a
-          href="#conteudo"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primaria focus:px-5 focus:py-3 focus:text-farinha"
-        >
-          Pular para o conteúdo
-        </a>
-        <TrackingProvider />
-        <SmoothScroll />
-        <ScrollReveals />
-        <Header />
-        <main id="conteudo">{children}</main>
-        <Footer />
-      </body>
+      <body className="grao min-h-dvh">{children}</body>
     </html>
   );
 }
