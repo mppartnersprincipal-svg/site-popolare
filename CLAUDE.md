@@ -47,6 +47,7 @@ Modo leve (`lib/device.ts`): reduced-motion, `deviceMemory < 4`, saveData ou 2G/
 
 ```bash
 npm run images                         # fotos originais (../Produtos Massas, ../Fotos Ambiente-Loja, ../Fotos da Carina, ../Fotos 2026) → public/img (AVIF/WebP 640/1080/1600[/2400]) + data/images.generated.json
+- **AVIF sempre 4:2:0** (`chromaSubsampling` no `process-images.mjs`): em 4:4:4 (perfil High) o Safari do iPhone com decodificador de hardware mostra imagem quebrada e não cai para o WebP. Conferir o perfil (byte `av1C` → `seq_profile` 0) se trocar o encoder.
 npm run frames -- ../video/<video>.mp4 # vídeo "entrando na loja" → public/frames/loja (96 WebP 768w) + data/frames.generated.json
 node scripts/contact-sheet.mjs <origem> <saida>  # grades para curadoria de fotos
 ```
