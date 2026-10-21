@@ -1,4 +1,5 @@
 // Processa as fotos originais (16MB+) em AVIF/WebP responsivos + placeholder blur.
+// AVIF sempre em croma 4:2:0 (perfil AV1 Main): o Safari do iPhone com decodificador de hardware (A17+) não abre 4:4:4 (High) e mostra imagem quebrada em vez de cair para o WebP.
 // Uso: npm run images
 // Saída: public/img/<grupo>/<slug>-<largura>.<ext> e data/images.generated.json
 import sharp from "sharp";
@@ -101,7 +102,7 @@ async function processOne(group, slug, entry) {
     const avif = path.join(outDir, `${slug}-${w}.avif`);
     const webp = path.join(outDir, `${slug}-${w}.webp`);
     if (!(await exists(avif))) {
-      await sharp(data).resize({ width: w, withoutEnlargement: true }).avif({ quality: 50, effort: 5 }).toFile(avif);
+      await sharp(data).resize({ width: w, withoutEnlargement: true }).avif({ quality: 50, effort: 5, chromaSubsampling: "4:2:0" }).toFile(avif);
     }
     if (!(await exists(webp))) {
       await sharp(data).resize({ width: w, withoutEnlargement: true }).webp({ quality: 72 }).toFile(webp);
