@@ -63,7 +63,7 @@ export const UNITS: readonly StoreUnit[] = [
     geoVerified: false,
     hours: [
       { days: "Segunda a sexta", schemaDays: WEEKDAYS, opens: "09:00", closes: "19:00" },
-      { days: "Sábado", schemaDays: ["Saturday"], opens: "09:00", closes: "15:00" },
+      { days: "Sábado", schemaDays: ["Saturday"], opens: "09:00", closes: "14:00" },
     ],
     mapsUrl: directionsUrl("Popolare Massas e Empório, Rua 88, 402, Setor Sul, Goiânia - GO, 74085-010"),
     isMain: true,

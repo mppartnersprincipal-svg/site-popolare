@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BRAND, DELIVERY, SOCIAL, UNITS, formatAddress } from "@/data/business";
 import { generalMessage, whatsappUrl } from "@/lib/whatsapp";
 import { LogoCompleto } from "@/components/ui/Logo";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 const LINKS = [
   { href: "/massas-em-goiania", label: "Massas em Goiânia" },
@@ -34,18 +35,27 @@ export function Footer() {
             <h2 className="eyebrow text-dourado">{unit.name}</h2>
             <p className="mt-4 leading-relaxed text-farinha/85">{formatAddress(unit)}</p>
             <ul className="mt-4 space-y-1 text-farinha/85">
-              {unit.phones.map((phone) => (
-                <li key={phone}>
-                  <a
-                    href={`tel:+55${phone.replace(/\D/g, "")}`}
-                    data-track="click_phone"
-                    data-track-unidade={unit.id}
-                    className="underline-offset-4 hover:underline"
-                  >
-                    {phone}
-                  </a>
-                </li>
-              ))}
+              {unit.phones.map((phone) => {
+                const isWhatsApp = phone === unit.whatsappDisplay;
+                return (
+                  <li key={phone}>
+                    <a
+                      href={`tel:+55${phone.replace(/\D/g, "")}`}
+                      data-track="click_phone"
+                      data-track-unidade={unit.id}
+                      className="inline-flex items-center gap-1.5 underline-offset-4 hover:underline"
+                    >
+                      {phone}
+                      {isWhatsApp && (
+                        <>
+                          <WhatsAppIcon className="size-4 shrink-0 text-[#25d366]" />
+                          <span className="sr-only">(WhatsApp)</span>
+                        </>
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
             {unit.hours && (
               <ul className="mt-4 space-y-1 text-sm text-farinha/70">

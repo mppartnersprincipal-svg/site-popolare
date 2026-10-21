@@ -1,6 +1,7 @@
 import { UNITS, formatAddress } from "@/data/business";
 import { generalMessage, whatsappUrl } from "@/lib/whatsapp";
 import { Picture } from "@/components/ui/Picture";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 interface LocationsProps {
   headingLevel?: "h1" | "h2";
@@ -40,11 +41,26 @@ export function Locations({ headingLevel = "h2" }: LocationsProps) {
                   <div>
                     <dt className="eyebrow text-[0.65rem] text-madeira-escura">Telefones</dt>
                     <dd className="mt-1 space-y-0.5">
-                      {unit.phones.map((p) => (
-                        <a key={p} href={`tel:+55${p.replace(/\D/g, "")}`} data-track="click_phone" data-track-unidade={unit.id} className="block hover:text-primaria">
-                          {p}
-                        </a>
-                      ))}
+                      {unit.phones.map((p) => {
+                        const isWhatsApp = p === unit.whatsappDisplay;
+                        return (
+                          <a
+                            key={p}
+                            href={`tel:+55${p.replace(/\D/g, "")}`}
+                            data-track="click_phone"
+                            data-track-unidade={unit.id}
+                            className="flex items-center gap-1.5 hover:text-primaria"
+                          >
+                            {p}
+                            {isWhatsApp && (
+                              <>
+                                <WhatsAppIcon className="size-4 shrink-0 text-[#1f9e4f]" />
+                                <span className="sr-only">(WhatsApp)</span>
+                              </>
+                            )}
+                          </a>
+                        );
+                      })}
                     </dd>
                   </div>
                   <div>
