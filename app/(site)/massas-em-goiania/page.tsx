@@ -8,8 +8,10 @@ import { HowToCook } from "@/components/sections/HowToCook";
 import { Press } from "@/components/sections/Press";
 import { CtaWhatsApp, SECONDARY_CTA } from "@/components/lp/LpCta";
 import { LpSteps } from "@/components/lp/LpSteps";
+import { LpFrozen } from "@/components/lp/LpFrozen";
 import { LpCatalog } from "@/components/lp/LpCatalog";
 import { LpKits } from "@/components/lp/LpKits";
+import { LpExtras } from "@/components/lp/LpExtras";
 import { LpStory } from "@/components/lp/LpStory";
 import { LpDelivery } from "@/components/lp/LpDelivery";
 import { CartBar } from "@/components/lp/cart/CartBar";
@@ -83,27 +85,33 @@ export default function MassasEmGoianiaPage() {
       {/* 2 — Como funciona o pedido pelo site */}
       <LpSteps />
 
-      {/* 3 — Cardápio completo com "Adicionar" */}
+      {/* 3 — Congelados: a linha, como cuidar e atalhos para as categorias */}
+      <LpFrozen />
+
+      {/* 4 — Cardápio completo com "Adicionar" */}
       <LpCatalog />
 
-      {/* 4 — Sugestões prontas (kits) */}
+      {/* 5 — Sugestões prontas (kits) */}
       <LpKits />
 
-      {/* 5 — Modo de preparo */}
+      {/* 6 — Além das massas: Nhoque da Fortuna, massa do mês, pães, empório */}
+      <LpExtras />
+
+      {/* 7 — Modo de preparo */}
       <div className="bg-farinha">
         <HowToCook />
       </div>
 
-      {/* 6 — A família + diferenciais */}
+      {/* 8 — A família + diferenciais */}
       <LpStory />
 
-      {/* 7 — Na mídia (prova social) */}
+      {/* 9 — Na mídia (prova social) */}
       <Press />
 
-      {/* 8 — Loja (retirada) e entrega */}
+      {/* 10 — Loja (retirada) e entrega */}
       <LpDelivery />
 
-      {/* 9 — Dúvidas + CTA final */}
+      {/* 11 — Dúvidas + CTA final */}
       <section data-section="lp-faq" aria-labelledby="lp-faq-titulo" className="py-16 md:py-24">
         <div className="container-popolare grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">

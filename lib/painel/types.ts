@@ -167,6 +167,8 @@ export const LOCAL_LABELS: Record<string, string> = {
   "lp-encomendas": "LP · encomendas",
   "lp-flutuante": "LP · botão flutuante",
   "lp-catalogo": "LP · cardápio completo",
+  "lp-congelados": "LP · congelados (atalho da categoria)",
+  "lp-extras": "LP · além das massas",
   "lp-kits": "LP · sugestões da casa",
   "lp-carrinho": "LP · Meu pedido (envio)",
   "lp-barra": "LP · barra Meu pedido",

@@ -1,11 +1,28 @@
 "use client";
 
-import { useEffect, useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { CATEGORIES, findItem, itemsByCategory, type MenuCategoryId, type MenuItem } from "@/data/menu";
 import { LP_PRODUCTS } from "@/data/lp";
 import { prefersReducedMotion } from "@/lib/device";
 import { track } from "@/lib/tracking";
+import { getLenis } from "@/components/experience/SmoothScroll";
 import { LpProductCard } from "./LpProductCard";
+
+const HEADER_HEIGHT = 80;
+/** Deixa um evento de scroll nativo pendente (ex.: salto anterior) ser processado antes de animar */
+const SCROLL_SETTLE_MS = 60;
+
+/** Rola até o cardápio pelo Lenis (o scrollIntoView nativo é ignorado enquanto o smooth scroll está ativo). */
+export function scrollToProducts(): void {
+  window.setTimeout(() => {
+    const el = document.getElementById("produtos");
+    if (!el) return;
+    const top = Math.max(0, el.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT);
+    const lenis = getLenis();
+    if (lenis) lenis.scrollTo(top);
+    else window.scrollTo({ top, behavior: "smooth" });
+  }, SCROLL_SETTLE_MS);
+}
 
 type TabId = "mais-pedidos" | MenuCategoryId;
 
@@ -30,17 +47,57 @@ const TABS: readonly Tab[] = [
   })),
 ];
 
+const SELECT_EVENT = "lp:categoria";
+
+/** Outras seções (ex.: Congelados) abrem uma aba do cardápio e rolam até ela. */
+export function selectCatalogTab(id: TabId): void {
+  window.dispatchEvent(new CustomEvent<TabId>(SELECT_EVENT, { detail: id }));
+}
+
 /** Cardápio completo com abas por categoria e botão "Adicionar" em cada item. */
 export function LpCatalog() {
   const [tabId, setTabId] = useState<TabId>("mais-pedidos");
   const tab = TABS.find((t) => t.id === tabId) ?? TABS[0];
+  const currentTab = useRef<TabId>(tabId);
+  const shouldScrollAfterRefresh = useRef(false);
+
+  useEffect(() => {
+    currentTab.current = tabId;
+  }, [tabId]);
+
+  useEffect(() => {
+    const onSelect = (e: Event) => {
+      const id = (e as CustomEvent<TabId>).detail;
+      if (!TABS.some((t) => t.id === id)) return;
+      if (id === currentTab.current) {
+        scrollToProducts();
+        return;
+      }
+      // Rola só depois do ScrollTrigger.refresh() da troca de aba: o refresh restaura a posição
+      // e, se a animação do Lenis já estivesse correndo, ela seria interrompida no meio
+      shouldScrollAfterRefresh.current = true;
+      setTabId(id);
+    };
+    window.addEventListener(SELECT_EVENT, onSelect);
+    return () => window.removeEventListener(SELECT_EVENT, onSelect);
+  }, []);
 
   // A altura da seção muda com a aba; os reveals abaixo (GSAP, já carregado pelo layout) precisam remedir
   useEffect(() => {
-    if (prefersReducedMotion()) return;
     let isCancelled = false;
+    const afterRefresh = () => {
+      if (isCancelled || !shouldScrollAfterRefresh.current) return;
+      shouldScrollAfterRefresh.current = false;
+      scrollToProducts();
+    };
+    if (prefersReducedMotion()) {
+      afterRefresh();
+      return;
+    }
     void import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
-      if (!isCancelled) ScrollTrigger.refresh();
+      if (isCancelled) return;
+      ScrollTrigger.refresh();
+      afterRefresh();
     });
     return () => {
       isCancelled = true;

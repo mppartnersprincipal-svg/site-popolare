@@ -53,6 +53,79 @@ export const LP_STEPS = [
   },
 ] as const;
 
+/** Seção "Congelados": como a linha funciona e como cuidar em casa (fatos já usados no site) */
+export const LP_FROZEN = {
+  intro:
+    "Tudo o que sai da Popolare é feito à mão e congelado logo depois do preparo. É assim que a massa chega à sua casa sem conservantes e com sabor de massa fresca.",
+  care: [
+    { title: "Direto para o congelador", text: "Ao chegar em casa, leve as embalagens ao congelador. Mantenha congelado até a hora de preparar." },
+    { title: "Não precisa descongelar", text: "Massas de forno vão congeladas ao forno a 200 °C; massas de cozinhar vão congeladas na água fervente." },
+    { title: "Molho pronto, mesa posta", text: "Os molhos também vão congelados: aqueça em fogo baixo enquanto a massa cozinha ou assa." },
+  ],
+} as const;
+
+export interface LpExtra {
+  id: string;
+  eyebrow: string;
+  title: string;
+  text: string;
+  /** Chave em data/images.generated.json; sem imagem usa o painel marsala com o título */
+  image?: string;
+  imageAlt?: string;
+  /** Mensagem pré-pronta do WhatsApp */
+  message: string;
+  cta: string;
+  /** yyyy-mm-dd — o card some sozinho depois desta data (itens sazonais) */
+  validUntil?: string;
+}
+
+/**
+ * Além do cardápio fixo: o que a Popolare vende ou anuncia e não entra no "Meu pedido"
+ * (fonte: doc "POPOLARE PRODUTOS E PLANEJAMENTO" do Drive do cliente + pastas "Produtos Empório").
+ * TODO(cliente): confirmar disponibilidade e regras do Nhoque da Fortuna, pães e empório.
+ */
+export const LP_EXTRAS: readonly LpExtra[] = [
+  {
+    id: "nhoque-da-fortuna",
+    eyebrow: "Todo dia 29",
+    title: "Nhoque da Fortuna",
+    text: "A tradição italiana do dia 29: nhoque de batata feito à mão para o almoço da sorte. Reserve o seu antes do dia.",
+    image: "produtos/gnocchi",
+    imageAlt: "Nhoque de batata da Popolare servido com molho e queijo ralado",
+    message: "Olá, Popolare! Vi o site e quero reservar o Nhoque da Fortuna do dia 29. Como funciona?",
+    cta: "Reservar o Nhoque da Fortuna",
+  },
+  {
+    id: "massa-do-mes-outubro",
+    eyebrow: "Massa do mês · outubro",
+    title: "Sfogliatti de Frango com Pequi",
+    text: "Da Itália ao Cerrado: a trouxinha de massa fresca com um recheio que tem gosto de Goiás. Só em outubro.",
+    message: "Olá, Popolare! Vi o site e quero o Sfogliatti de Frango com Pequi, a massa do mês. Está disponível?",
+    cta: "Quero a massa do mês",
+    validUntil: "2026-10-31",
+  },
+  {
+    id: "paes",
+    eyebrow: "Il pane",
+    title: "Pães para a mesa italiana",
+    text: "Focaccia e sourdough frescos, e os pães congelados da Cantina em Casa, marca parceira da Popolare. Para fazer a scarpetta no molho que ficou no prato.",
+    image: "loja/grissini",
+    imageAlt: "Grissini e pães do empório da Popolare na prateleira de madeira",
+    message: "Olá, Popolare! Vi o site e quero saber quais pães (focaccia, sourdough, congelados) vocês têm hoje.",
+    cta: "Perguntar sobre os pães",
+  },
+  {
+    id: "emporio",
+    eyebrow: "L'emporio",
+    title: "Vinhos, geleias e importados",
+    text: "O empório da loja tem vinhos, geleias e produtos italianos escolhidos pela Carina para acompanhar as massas. Peça uma sugestão para o seu prato.",
+    image: "loja/vinhos",
+    imageAlt: "Prateleira de vinhos do empório da Popolare",
+    message: "Olá, Popolare! Vi o site e quero uma sugestão de vinho ou produto do empório para acompanhar as massas.",
+    cta: "Pedir uma sugestão",
+  },
+];
+
 export const LP_BENEFITS = [
   { title: "Receita de família italiana", text: `Remo e Antonietta trouxeram as receitas da Itália; desde ${BRAND.foundingYear} a família faz massas em Goiânia.` },
   { title: "Congelada, não industrializada", text: "Massa artesanal congelada logo após o preparo: preserva o sabor de massa caseira sem conservantes." },
@@ -138,6 +211,11 @@ export const LP_FAQ: readonly FaqItem[] = [
   {
     question: "Como preparar massa congelada?",
     answer: "Massas de forno vão direto do congelador ao forno a 200 °C por cerca de 40 minutos. Massas para cozinhar vão congeladas na água fervente por 3 a 5 minutos.",
+  },
+  {
+    question: "Como conservar as massas congeladas em casa?",
+    answer:
+      "Leve as embalagens ao congelador assim que chegar e mantenha congelado até a hora de preparar. Não precisa descongelar: a massa vai direto ao forno ou à água fervente.",
   },
   {
     question: "A Popolare entrega em Goiânia?",

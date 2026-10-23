@@ -9,6 +9,7 @@ import { cartMessage, whatsappUrl } from "@/lib/whatsapp";
 import { SCROLL_LOCK_CLASS } from "@/components/experience/SmoothScroll";
 import { Picture } from "@/components/ui/Picture";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { scrollToProducts } from "@/components/lp/LpCatalog";
 import { AddToCart } from "./AddToCart";
 
 const MAX_OBS = 300;
@@ -67,7 +68,8 @@ export function CartDrawer() {
 
   const goToProducts = () => {
     cartStore.close();
-    document.getElementById("produtos")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // a trava de rolagem sai no cleanup do efeito; rola no próximo quadro
+    requestAnimationFrame(scrollToProducts);
   };
 
   const field = "mt-1.5 w-full rounded-2xl border border-tinta/15 bg-farinha px-4 py-3 text-sm text-tinta outline-none transition-colors focus:border-primaria";
