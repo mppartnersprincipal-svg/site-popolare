@@ -18,6 +18,8 @@ const SECURITY_HEADERS = [
 ];
 
 const nextConfig: NextConfig = {
+  // Atualizações de segurança do Next aplicadas pelo agente (next upgrade --agent=security)
+  experimental: { agentUpgrade: "security" },
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
