@@ -2,7 +2,7 @@ import { MAIN_UNIT } from "@/data/business";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
-const MESSAGE = "Olá, Popolare! Vi o anúncio e quero comprar massas. Pode me ajudar?";
+const MESSAGE = "Olá, vim do site e gostaria de fazer um pedido";
 
 interface WhatsAppFloatProps {
   /** Posicionamento; por padrão flutua no canto inferior direito. A CartBar o coloca dentro da própria barra. */
