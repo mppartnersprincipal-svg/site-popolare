@@ -11,6 +11,9 @@ export type TrackingEvent =
   | "section_view"
   | "intro_pasta_select"
   | "catalog_filter"
+  | "add_to_cart"
+  | "remove_from_cart"
+  | "view_cart"
   | `scroll_${25 | 50 | 75 | 100}`;
 
 type EventParams = Record<string, string | number | boolean | undefined>;

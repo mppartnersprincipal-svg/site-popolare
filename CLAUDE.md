@@ -69,7 +69,7 @@ Tamanhos com variável CSS no Tailwind 4: use `text-[length:var(--x)]` (sem `len
 
 ## Trackeamento
 
-GTM via `components/tracking/TrackingProvider.tsx` (`NEXT_PUBLIC_GTM_ID`). Cliques: qualquer elemento com `data-track="<evento>"` (+ `data-track-*` como parâmetros). Automáticos: `scroll_25/50/75/100`, `section_view` (`data-section`). Específicos: `intro_pasta_select`, `catalog_filter`, `form_submit`. UTMs da URL de entrada vão em todos os eventos. GA4/Ads/Meta Pixel são tags dentro do GTM (skill `lp-tracking-dashboard`).
+GTM via `components/tracking/TrackingProvider.tsx` (`NEXT_PUBLIC_GTM_ID`). Cliques: qualquer elemento com `data-track="<evento>"` (+ `data-track-*` como parâmetros). Automáticos: `scroll_25/50/75/100`, `section_view` (`data-section`). Específicos: `intro_pasta_select`, `catalog_filter`, `form_submit`, `add_to_cart`/`remove_from_cart`/`view_cart` (LP). Rótulos dos locais/eventos para o painel em `lib/painel/types.ts` (`LOCAL_LABELS`, `EVENT_LABELS`) — ao criar um `data-track-local` novo, registrar lá. UTMs da URL de entrada vão em todos os eventos. GA4/Ads/Meta Pixel são tags dentro do GTM (skill `lp-tracking-dashboard`).
 
 ## Painel `/painel` (métricas próprias — 19/10/2026)
 
@@ -100,7 +100,9 @@ Resolvidas (14/10/2026): Instagram oficial = @popolaremassas · preços não apa
 
 ## LP de campanha (Google Ads)
 
-`/massas-em-goiania` (`app/(site)/massas-em-goiania/page.tsx`, conteúdo em `data/lp.ts`): página leve (sem intro/3D/vídeo), 5 dobras com CTA (hero · produtos [carrossel no mobile] · diferenciais · lojas · FAQ+CTA final), WhatsApp flutuante com link direto para o Setor Sul (`components/lp/WhatsAppFloat.tsx`, evento `click_whatsapp` local `lp-flutuante`). FAQPage + Breadcrumb próprios; no sitemap com prioridade 0.9. `gclid/gbraid/wbraid` são capturados junto das UTMs e vão em todos os eventos. GSAP/Lenis do layout carregam sob demanda (não entram no bundle inicial).
+`/massas-em-goiania` (`app/(site)/massas-em-goiania/page.tsx`, conteúdo em `data/lp.ts`): página leve (sem intro/3D/vídeo). Desde 23/10/2026 tem 9 dobras: hero (+ faixa de prova `LP_PROOF`) · como funciona (`LpSteps`) · **cardápio completo com abas** (`LpCatalog` + `LpProductCard`, aba "Mais pedidos" = `LP_PRODUCTS`) · kits (`LpKits`, `LP_KITS`: combinações de ids reais do cardápio) · modo de preparo (`HowToCook`) · família + diferenciais (`LpStory`) · na mídia (`Press`) · loja e entrega (`LpDelivery`, parceiros de `DELIVERY` com `click_delivery`) · FAQ + CTA final. CTA compartilhado em `components/lp/LpCta.tsx` (`variant="farinha"` para fundo marsala — nunca sobrescrever `bg-*` via className). FAQPage + Breadcrumb próprios; no sitemap com prioridade 0.9. `gclid/gbraid/wbraid` são capturados junto das UTMs e vão em todos os eventos. GSAP/Lenis do layout carregam sob demanda (não entram no bundle inicial).
+
+**"Meu pedido" (carrinho sem preço)** — `lib/cartStore.ts` (store externo com `useSyncExternalStore`, persistido em `localStorage` `popolare_pedido`, funções puras testadas em `lib/cartStore.test.ts`) + `components/lp/cart/` (`AddToCart` = botão que vira contador; `CartBar` = rodapé flutuante com WhatsApp direto e a pílula "Meu pedido"; `CartDrawer` = gaveta com lista, refratário, observações e o link `wa.me` com `cartMessage()` de `lib/whatsapp.ts`). Sem pagamento e sem preço: a loja confirma valor no WhatsApp. O envio é um `<a data-track="click_whatsapp" data-track-local="lp-carrinho" data-track-itens data-track-produtos>` — portanto conta como a mesma conversão no GTM/Ads e no painel, sem mudança no SQL. Eventos extras: `add_to_cart` (produto, categoria, quantidade, local; `kit: true` nos kits), `remove_from_cart`, `view_cart` (itens). Observações do cliente só vão na mensagem, nunca no dataLayer/painel.
 
 ## LGPD
 
@@ -123,6 +125,8 @@ Produção: **https://loja.popolare.com.br** (desde 19/10/2026). A cliente quis 
 - Lab (Lighthouse mobile simulado, Vercel): LCP 3,7–3,9s, CLS 0, TBT 0,8–2,4s (custo do 3D carregado após o load). A11y/BP 100; SEO 100 no domínio oficial.
 
 ## Histórico
+
+- 2026-10-23 — LP `/massas-em-goiania` ampliada (9 dobras: passos, cardápio completo com abas, kits, modo de preparo, família, mídia, loja+entrega, FAQ) e "Meu pedido" (carrinho sem preço → mensagem pronta no WhatsApp). Verificado com Playwright (desktop + mobile): fluxo adicionar → barra → gaveta → wa.me, persistência, Esc, dataLayer; zero erros de console.
 
 - 2026-10-19 — unidade Eldorado removida (fechou): só o Setor Sul em UI, JSON-LD, llms, LP, formulário (retirada fixa) e WhatsApp flutuante (link direto). O painel mantém o rótulo "Eldorado (encerrada)" para eventos antigos.
 - 2026-10-14 — sem preços no site; Instagram e horário do Eldorado; botão "Trocar massa" no hero; LP `/massas-em-goiania` para Google Ads.

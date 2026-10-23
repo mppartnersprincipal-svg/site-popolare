@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { UNITS } from "@/data/business";
 import { findItem, MENU } from "@/data/menu";
-import { orderMessage, productMessage, unitById, whatsappUrl } from "./whatsapp";
+import { cartMessage, orderMessage, productMessage, unitById, whatsappUrl } from "./whatsapp";
 
 describe("whatsapp", () => {
   test("monta a URL wa.me com a mensagem codificada", () => {
@@ -46,6 +46,35 @@ describe("whatsapp", () => {
     expect(msg).toContain("Popolare Setor Sul");
     expect(msg).toContain("refratário: Sim");
     expect(msg).toContain("Observações: sem cebola");
+  });
+});
+
+describe("mensagem do carrinho (Meu pedido)", () => {
+  test("lista cada item com quantidade e peso, sem preço, e pede confirmação de valor", () => {
+    const msg = cartMessage({
+      entries: [
+        { item: findItem("lasagne-bolognese")!, qty: 2 },
+        { item: findItem("tiramisu")!, qty: 1 },
+      ],
+    });
+    expect(msg).toContain("• 2× Lasagne alla Bolognese (Lasanha à bolonhesa) — 700 g");
+    expect(msg).toContain("• 1× Tiramisù — 500 g");
+    expect(msg).toContain("Retirada: Popolare Setor Sul (Rua 88, 402)");
+    expect(msg).toContain("valor total?");
+    expect(msg).not.toMatch(/R\$/);
+    expect(msg).not.toContain("refratário");
+  });
+
+  test("inclui refratário e observações quando informados", () => {
+    const msg = cartMessage({ entries: [{ item: findItem("sfogliatti-bianco")!, qty: 1 }], refratario: true, observacoes: "  retiro sábado  " });
+    expect(msg).toContain("refratário: Sim");
+    expect(msg).toContain("Observações: retiro sábado");
+  });
+
+  test("a URL do WhatsApp com o pedido inteiro continua válida", () => {
+    const url = whatsappUrl(UNITS[0], cartMessage({ entries: [{ item: findItem("pesto")!, qty: 3 }] }));
+    expect(url.startsWith("https://wa.me/556239456633?text=")).toBe(true);
+    expect(decodeURIComponent(url.split("text=")[1])).toContain("3× Pesto");
   });
 });
 

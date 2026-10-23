@@ -51,6 +51,11 @@ function interestStep(e: TrailEvent): JourneyStep | null {
   const p = e.params ?? {};
   if (e.name === "intro_pasta_select") return { kind: "interest", label: `Escolheu ${labelPasta(String(p.massa ?? ""))}`, ts: e.ts };
   if (e.name === "catalog_filter") return { kind: "interest", label: `Filtrou: ${labelCategory(String(p.categoria ?? ""))}`, ts: e.ts };
+  if (e.name === "add_to_cart") {
+    const what = p.kit ? `kit ${String(p.produto ?? "")}` : labelProduct(String(p.produto ?? ""));
+    return { kind: "interest", label: `Adicionou ao pedido: ${what}`, ts: e.ts };
+  }
+  if (e.name === "view_cart") return { kind: "interest", label: `Abriu o Meu pedido${p.itens != null ? ` (${p.itens} itens)` : ""}`, ts: e.ts };
   return null;
 }
 

@@ -162,10 +162,19 @@ export const LOCAL_LABELS: Record<string, string> = {
   blog: "Blog",
   "encomenda-sucesso": "Encomenda enviada",
   "lp-hero": "LP · topo",
-  "lp-hero-produtos": "LP · produtos do topo",
+  "lp-hero-produtos": "LP · montar pedido (topo)",
   "lp-cardapio": "LP · cardápio",
   "lp-encomendas": "LP · encomendas",
   "lp-flutuante": "LP · botão flutuante",
+  "lp-catalogo": "LP · cardápio completo",
+  "lp-kits": "LP · sugestões da casa",
+  "lp-carrinho": "LP · Meu pedido (envio)",
+  "lp-barra": "LP · barra Meu pedido",
+  "lp-familia": "LP · família",
+  "lp-historia": "LP · história completa",
+  "lp-loja": "LP · loja e entrega",
+  "lp-final": "LP · CTA final",
+  "lp-final-produtos": "LP · montar pedido (final)",
 };
 
 export const EVENT_LABELS: Record<string, string> = {
@@ -181,6 +190,9 @@ export const EVENT_LABELS: Record<string, string> = {
   section_view: "Viu seção",
   intro_pasta_select: "Escolheu massa na intro",
   catalog_filter: "Filtrou o cardápio",
+  add_to_cart: "Adicionou ao pedido",
+  remove_from_cart: "Tirou do pedido",
+  view_cart: "Abriu o Meu pedido",
   cookie_consent: "Respondeu os cookies",
 };
 
