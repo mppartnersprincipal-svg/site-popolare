@@ -51,6 +51,22 @@ const SOURCES = {
     "brodo-verdure": "Fotos 2026/brodo-verdure.jpg",
     // original só em RAW (Produtos Massas/Rondelli de queijo ao molho sugo/_MG_2429.CR2); JPG = prévia 2400px do Drive
     "rondelli-mozzarella": "Fotos 2026/rondelli-mozzarella.jpg",
+    // 23/10/2026 — pastas por produto linkadas no doc "POPOLARE PRODUTOS E PLANEJAMENTO" do Drive
+    "sfogliatti-carne-secca": "Fotos 2026/sfogliatti-carne-secca.jpg",
+    "fettuccine-verde": "Fotos 2026/fettuccine-verde.jpg",
+    "pappardelle-bianco": "Fotos 2026/pappardelle-bianco.jpg",
+    "pappardelle-verde": "Fotos 2026/pappardelle-verde.jpg",
+    "lasagne-melanzane": "Fotos 2026/lasagne-melanzane.jpg",
+    "salsa-bianca": "Fotos 2026/salsa-bianca.jpg",
+    "quattro-formaggi": "Fotos 2026/quattro-formaggi.jpg",
+    "agnolotti-giallo": "Fotos 2026/agnolotti-giallo.jpg",
+    "cappelletti-carne": "Fotos 2026/cappelletti-carne.jpg",
+    // "Fotos IA": geradas em 23/10/2026 (Higgsfield, GPT Image 2.5) para itens sem foto no Drive —
+    // marcadas como imageIllustrative em data/menu.ts / data/lp.ts. Trocar quando houver foto real.
+    "sfoglia-lasagne": "Fotos IA/sfoglia-lasagne.png",
+    "sfogliattini-pere-gorgonzola": "Fotos IA/sfogliattini-pere-gorgonzola.png",
+    "ragu-bolognese": "Fotos IA/ragu-bolognese.png",
+    "sfogliatti-frango-pequi": "Fotos IA/sfogliatti-frango-pequi.png",
   },
   cucina: {
     "forno-gratinado": `${P}/Manicaretti Verde/_MG_3358.JPG`,

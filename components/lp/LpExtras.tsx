@@ -54,6 +54,11 @@ export function LpExtras() {
                   <p className="absolute left-3 top-3 rounded-full bg-farinha/90 px-3 py-1 text-[0.66rem] font-bold uppercase tracking-wider text-primaria backdrop-blur">
                     {extra.eyebrow}
                   </p>
+                  {extra.imageIllustrative && extra.image && (
+                    <p className="absolute bottom-2 right-2 rounded-full bg-tinta/60 px-2 py-0.5 text-[0.58rem] font-semibold uppercase tracking-wider text-farinha backdrop-blur">
+                      Imagem ilustrativa
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <h3 className="italiano text-[1.6rem] leading-[1.05] text-tinta">{extra.title}</h3>

@@ -126,11 +126,12 @@ Produção: **https://loja.popolare.com.br** (desde 19/10/2026). A cliente quis 
 
 ## Histórico
 
+- 2026-10-23 — cardápio 100% com imagem: 9 fotos reais do Drive (pastas linkadas no doc de produtos; originais em `../Fotos 2026/`), Rondelli sem lactose reaproveita a foto do Rondelli de muçarela, e 4 imagens geradas por IA (`../Fotos IA/`, Higgsfield GPT Image 2.5: sfoglia, sfogliattini pera e gorgonzola, ragù, sfogliatti de pequi) marcadas com `imageIllustrative: true` → selo "Imagem ilustrativa" nos cards. Trocar pelas fotos reais quando a cliente fizer o ensaio.
 - 2026-10-23 — Next.js 16.4.0 → 16.4.3 (advisory de segurança; `next upgrade --agent=security`, `experimental.agentUpgrade: "security"` no config). Seções "Congelados" e "Além das massas" na LP (fontes: cardápio oficial 2026, doc de produtos/planejamento e pastas do Drive).
 - 2026-10-23 — LP `/massas-em-goiania` ampliada (passos, cardápio completo com abas, kits, modo de preparo, família, mídia, loja+entrega, FAQ) e "Meu pedido" (carrinho sem preço → mensagem pronta no WhatsApp). Verificado com Playwright (desktop + mobile): fluxo adicionar → barra → gaveta → wa.me, persistência, Esc, dataLayer; zero erros de console.
 
 - 2026-10-19 — unidade Eldorado removida (fechou): só o Setor Sul em UI, JSON-LD, llms, LP, formulário (retirada fixa) e WhatsApp flutuante (link direto). O painel mantém o rótulo "Eldorado (encerrada)" para eventos antigos.
 - 2026-10-14 — sem preços no site; Instagram e horário do Eldorado; botão "Trocar massa" no hero; LP `/massas-em-goiania` para Google Ads.
-- 2026-10-14 — cardápio: +6 fotos novas (involtino, tortelli, rondelli de muçarela, molho ao sugo, alla panna, brodo — Drive `2026/EMPÓRIO POPOLARE - FEV-26`) e itens "ao sugo" reaproveitando a foto do produto base. Ainda sem foto no Drive: sfoglia, agnolotti giallo, sfogliatti carne seca, sfogliattini pera, rondelli sem lactose, lasanha de berinjela, fettuccine verde, pappardelle (2), cappelletti de carne, salsa bianca, ragù, quattro formaggi.
+- 2026-10-14 — cardápio: +6 fotos novas (involtino, tortelli, rondelli de muçarela, molho ao sugo, alla panna, brodo — Drive `2026/EMPÓRIO POPOLARE - FEV-26`) e itens "ao sugo" reaproveitando a foto do produto base. (Os 13 itens que ficaram sem foto foram resolvidos em 23/10 — ver acima.)
 - 2026-10-14 — fotos da Carina (pasta "Fotos da Carina" do Drive) em 5 pontos do site + `employee.image` no JSON-LD.
 - 2026-10-13 — v1: site completo (home imersiva, 8 páginas internas, blog migrado, SEO/GEO, tracking, LGPD), revisado por 2 agentes (geral + React) e publicado em popolare-site.vercel.app.

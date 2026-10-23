@@ -72,6 +72,8 @@ export interface LpExtra {
   /** Chave em data/images.generated.json; sem imagem usa o painel marsala com o título */
   image?: string;
   imageAlt?: string;
+  /** Imagem gerada por IA: o card mostra "imagem ilustrativa" */
+  imageIllustrative?: boolean;
   /** Mensagem pré-pronta do WhatsApp */
   message: string;
   cta: string;
@@ -100,6 +102,9 @@ export const LP_EXTRAS: readonly LpExtra[] = [
     eyebrow: "Massa do mês · outubro",
     title: "Sfogliatti de Frango com Pequi",
     text: "Da Itália ao Cerrado: a trouxinha de massa fresca com um recheio que tem gosto de Goiás. Só em outubro.",
+    image: "produtos/sfogliatti-frango-pequi",
+    imageAlt: "Sfogliatti de frango com pequi ao molho de tomate, com pequis inteiros ao lado (imagem ilustrativa)",
+    imageIllustrative: true,
     message: "Olá, Popolare! Vi o site e quero o Sfogliatti de Frango com Pequi, a massa do mês. Está disponível?",
     cta: "Quero a massa do mês",
     validUntil: "2026-10-31",

@@ -15,6 +15,7 @@ export function LpProductCard({ item, local }: LpProductCardProps) {
   const tags = [item.badge && BADGE_LABEL[item.badge], item.onOrder && "Sob encomenda", item.lactoseFree && "Sem lactose"].filter(
     Boolean
   ) as string[];
+  const illustrative = item.imageIllustrative && item.image;
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] bg-farinha shadow-[0_20px_50px_-36px_rgba(89,14,19,0.6)] sm:rounded-[1.5rem]">
@@ -40,6 +41,11 @@ export function LpProductCard({ item, local }: LpProductCardProps) {
               </li>
             ))}
           </ul>
+        )}
+        {illustrative && (
+          <p className="absolute bottom-2 right-2 rounded-full bg-tinta/60 px-2 py-0.5 text-[0.58rem] font-semibold uppercase tracking-wider text-farinha backdrop-blur">
+            Imagem ilustrativa
+          </p>
         )}
       </div>
 

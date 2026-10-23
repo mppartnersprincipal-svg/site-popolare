@@ -319,6 +319,136 @@
     "aspect": 0.6669,
     "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADwAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JbAC2yB8lPoYNLkfx3mqAAP1Tsan/lRWuLTZDTUuKLVy2Dvrnc9lcM6Dk+b+sW2VWG9TzI7Zdz3KgrVN2wpSgMOlzrR8wuJ0LzcCWmw6gIMzgTKNIGZYDTv5Na7d2oaAtj0LjiLxp+g+TLms5tr36AUcAAA=="
   },
+  "produtos/sfogliatti-carne-secca": {
+    "src": "/img/produtos/sfogliatti-carne-secca",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACwAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JagCdABS6vgujJmePeAD3jCNq403eEpCs6W4esSx9gRyreS1m0WebSB6MMoQYbODvjrAgRJwIGcWjnTQoYBpZKKLlqRoCgosOZaxOwm0Y2H8nKBxf16HciPNi80ekpJml7ptLAAA="
+  },
+  "produtos/fettuccine-verde": {
+    "src": "/img/produtos/fettuccine-verde",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JYgCdAYv033aTcQn+QYEwACcAAP7chWNoOB1jRwwZsL/nWbI8+pxnVzzjqyIX78nN+jhAKYm/TYc5KZaU2J4P+EVQFZkeUGsDnPWC7qbzZtQ9saLLlx0Z8TRK/VxxUax8LEIHg/gW4Q4IKGhAExGv8QDVDCqUBPPSVzT0iVNOHUAA"
+  },
+  "produtos/pappardelle-bianco": {
+    "src": "/img/produtos/pappardelle-bianco",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADwAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JQBYdsWWcI89vlkXbjwwAAP7c8/+4GUEjCCDJhyLyifHpgeXq39gAD2gATCNzqHBiihcj7mapiK0n/3qx3S1QK5bc7IhrOg4+DDw5S4tYU1PcJfz9g7cTQVojdGv/HAOc2vAWwMBegAAA"
+  },
+  "produtos/pappardelle-verde": {
+    "src": "/img/produtos/pappardelle-verde",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAADQBACdASoUAA0APu1iqU2ppaOiMAgBMB2JaACdMoR3AdB87gRvPoF7DQ/SPssJ4AD+3LvIihtO2+y+fdr1jXS3H3F1GJSEFFPqDMalbZx8KTWiFFh7mOuQxUhXBykrsgunhiYONeduPi4qOa6s+1efrjX9xjVMs3fj8elR/72Bnqh6YJcq7vKtg04Qf4+Ci53WA6KOIAinOFmeGAA="
+  },
+  "produtos/lasagne-melanzane": {
+    "src": "/img/produtos/lasagne-melanzane",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRgwBAABXRUJQVlA4IAABAAAQBgCdASoUAB4APu1sqk8ppiOiMBgIATAdiWwAnTKDGDiDgDuZUfCY/fEzXGBFf1ybB6kkwz1OB3wA+6R91H0bMT2p6PZoH0SecH2AN0npUxgG6uyRT9FswRX43PJwNdPaK6op1M0pTd9z2tyCNVBVJrezVEpNckttVUlhktwiMyGE+ecgkIzE4ciGuuL2ey0viZDi4ipBNMJeUUtskWk0qTtbjxvXJ4H5whCT8OL+izLWF/gQPdVPihVClpzDyI4t2viSiM3hNHW6auFVdvESMkx/M37PsI76xoObELUehANMD7gxnXHsSGnxT0hEAIPTbu4qyEWoOwZeHM0pwAAA"
+  },
+  "produtos/salsa-bianca": {
+    "src": "/img/produtos/salsa-bianca",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAABwBQCdASoUAB4APu1qr1CppaQiqAqpMB2JYwC+SAv9f4tvdfXDjvpCSjwSn5Xyhip/pIwAAP067eWNK4bWEhyLb49itsgtVvq0EReTPzloahJuH4Y86vvtLOwNVCjEjdneBSHZlHZFsyioUFXPV5LjM9PPDpxDp7aAzNjvYfoMGuabm7+RVtXB7/FMQacJs2vPtrKw7ToX9tvMYPT6YsZKSPG+Z1RH+FjGqK7Lp/kUxAAA"
+  },
+  "produtos/quattro-formaggi": {
+    "src": "/img/produtos/quattro-formaggi",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.6669,
+    "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAABwBACdASoUAA0APu1iqU2ppaOiMAgBMB2JbACdMoR4GCxYPUQeuAOPmfxJ8AD+ju4UuKkYyTst1jUSQOxhvn4PYz6cXOvhmAHQNW58005blvsTK+b3sDukNHp2Y2nXUUzNBv6Tra7pODFiLYSSdfuSflHFZg6SoAAAAA=="
+  },
+  "produtos/agnolotti-giallo": {
+    "src": "/img/produtos/agnolotti-giallo",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.5,
+    "blur": "data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAAAwBgCdASoUAB4APu1oq0+ppiOiMBgIATAdiWgAnTKEeZjZayQDkw4E14AFbdvIfyJiwqBEeaCWUNXkAOJu+lXicl3wOw3Lw81lWL/K97Eip0lMI5W+sckDiIJI+67dzq7aN0Y/4lzUHiAQTzG5poIrQn5GlQ0mQbj4e7VQbwUcxHZSd14GEoopFWyEkemrKPI8KianfzBlYk0zyXbVZiEGjYwd3WMyIXH+P9tZnMpdUJrBJuvUkBC3Q27Z4zLqsAA="
+  },
+  "produtos/cappelletti-carne": {
+    "src": "/img/produtos/cappelletti-carne",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 1.7775,
+    "blur": "data:image/webp;base64,UklGRiABAABXRUJQVlA4IBQBAAAwBwCdASoUACQAPu1srlIppaQipWsxMB2JagCsM46CsQaFQmQ636xhwza6Q+aTxPyuB78wmI59bebql7vFqVJNzgAA/tc0G71DksY0gz7VTOwQPs01t4YuqX5Sg2Mm/MSYPvuyRIuDqrMIY4MJjTsbmFZomHfRYIGjzzmeViP4RP3p3Z7Q1yc+kLqxzWlyqpkr4ACuLhDXRuimCrX6wp/Eg9CZKfkKcTCsTCDx/wMmQE4G4Nu0wMG0FWEeudg9ieFjGYiFPmhJ7BD2WcgBZEJ4hg70bvqL3ZckadusUYTLdZHSYtboCw6W7Kll818hOCdKugcNE7e7J4Wm7uBla4KMrm5338GHm3NB86iu0/u30vEAAAA="
+  },
+  "produtos/sfoglia-lasagne": {
+    "src": "/img/produtos/sfoglia-lasagne",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.7534,
+    "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAACQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JZgCdMoGv/gMliP5JcBtWFgRwjAAA3lhWA14QxXfZs/3ox88z7/UHyCDt6g3pvDmaJ3P28XP4CsGGBd5zm6gbwl82GcJuDRisrS5r+qjViQwn8jQTahQ2w8hwCXXN1jDipqD3Vf97HAuU7TpWND30Mi9Aw315Pk/J0/+EaibIAA=="
+  },
+  "produtos/sfogliattini-pere-gorgonzola": {
+    "src": "/img/produtos/sfogliattini-pere-gorgonzola",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.7534,
+    "blur": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAADwBACdASoUAA8APu1iqU2ppaOiMAgBMB2JbACdMoR3AdElD0CvkivCfAX7jldpuoAAzCWh9jS+tYghA4svDeJ9rwnWO2Ur72n4KPcdUbUXQwTiC2gACFQ3Gp1QwC53faxV9j53YU1zZUZv8mWmozUjY7WzT2Pkgkbl/YCXZ4QfCoVROdhBstPtT7Hi/SRT8Ekez5K9gqHxldY6kyXLOHKMwXPjywAA"
+  },
+  "produtos/ragu-bolognese": {
+    "src": "/img/produtos/ragu-bolognese",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.7534,
+    "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAwBACdASoUAA8APu1iqU2ppaOiMAgBMB2JZgCdACHuNORWE+AoLPbkR8AA/sYD6amlOVuEKe65+VzaK2jlmh0rmpKWKtUS3AgZaE+WTnbxxBnyN6Ol1LL65xHry6aGfF3roftrRYUfNqgxRM8yI86gRT4Zk9gd/mwaD31R6GiI3XSnhjMv+zLwDQsAAA=="
+  },
+  "produtos/sfogliatti-frango-pequi": {
+    "src": "/img/produtos/sfogliatti-frango-pequi",
+    "widths": [
+      640,
+      1080,
+      1600
+    ],
+    "aspect": 0.7534,
+    "blur": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAADwBACdASoUAA8APu1iqU2ppaOiMAgBMB2JbACdMoRwFf/i19W3387j6BDD8mvLH0AA/LPTYmnLoIEmH6m85sDoWVr4qqaGSzZaIkp8hS5aVtHfWHAj9q/A9YVE//JyCnQvxJET1aObXrkHnhFq4rddlRBITtOhzlOl5KIaVStYkfBNFh3I635QWQEuPFNtBEXuwrran44mY6nHuxuHl3CDbY/Zo0o9d0NEPHGE1WOhNPmvoAA="
+  },
   "cucina/forno-gratinado": {
     "src": "/img/cucina/forno-gratinado",
     "widths": [

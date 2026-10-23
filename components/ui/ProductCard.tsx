@@ -79,6 +79,11 @@ export function ProductCard({ item, origem }: ProductCardProps) {
             ))}
           </ul>
         )}
+        {item.imageIllustrative && item.image && (
+          <p className="absolute bottom-3 right-3 rounded-full bg-tinta/60 px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-wider text-farinha backdrop-blur">
+            Imagem ilustrativa
+          </p>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-6">
