@@ -10,7 +10,7 @@ import { SITE_URL } from "@/data/business";
  *
  * - Lotes via sendBeacon (text/plain → sem preflight); responde 204 na hora e grava em after().
  * - Anônimo: sem IP (só hash em memória p/ rate limit), sem user-agent cru, sem cookies.
- * - Sem POPOLARE_DATABASE_URL aceita e descarta (dev local / preview).
+ * - Fora de produção (VERCEL_ENV ≠ production) ou sem POPOLARE_DATABASE_URL aceita e descarta.
  */
 
 const MAX_BODY = 32 * 1024;
@@ -160,7 +160,12 @@ function buildSession(sid: string, s: NonNullable<Incoming["s"]>, request: NextR
   };
 }
 
+// Só produção grava: `npm run dev` com .env.local (que tem o POPOLARE_DATABASE_URL para o painel)
+// poluía o painel com testes locais. POPOLARE_COLLECT_DEV=1 libera a gravação fora da Vercel.
+const IS_COLLECT_ENABLED = process.env.VERCEL_ENV === "production" || process.env.POPOLARE_COLLECT_DEV === "1";
+
 export async function POST(request: NextRequest) {
+  if (!IS_COLLECT_ENABLED) return new Response(null, { status: 204 });
   const uaRaw = request.headers.get("user-agent") ?? "";
   if (!uaRaw || BOT_RE.test(uaRaw) || userAgent(request).isBot) return new Response(null, { status: 204 });
 
