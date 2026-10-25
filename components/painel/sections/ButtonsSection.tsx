@@ -84,11 +84,19 @@ function PivotTable({ title, data, colLabel }: { title: string; data: ReturnType
 export async function ButtonsSection({ range }: { range: Range }) {
   const rows = await getButtons(range);
 
-  const cards = new Map<string, { kind: ButtonKind; clicks: number; sessions: number }>();
+  // Pago = visita que chegou por anúncio (Google Ads); orgânico = todo o resto (busca, direto, social, referência)
+  const cards = new Map<string, { kind: ButtonKind; clicks: number; sessions: number; paid: number; organic: number }>();
   for (const r of rows) {
     const k = buttonName(r);
-    const c = cards.get(k) ?? { kind: r.kind, clicks: 0, sessions: 0 };
-    cards.set(k, { ...c, clicks: c.clicks + r.clicks, sessions: c.sessions + r.sessions });
+    const c = cards.get(k) ?? { kind: r.kind, clicks: 0, sessions: 0, paid: 0, organic: 0 };
+    const isPaid = r.channel === "google_ads";
+    cards.set(k, {
+      ...c,
+      clicks: c.clicks + r.clicks,
+      sessions: c.sessions + r.sessions,
+      paid: c.paid + (isPaid ? r.clicks : 0),
+      organic: c.organic + (isPaid ? 0 : r.clicks),
+    });
   }
   const cardList = [...cards.entries()].sort((a, b) => b[1].clicks - a[1].clicks);
   const maxClicks = Math.max(0, ...cardList.map(([, c]) => c.clicks));
@@ -98,7 +106,7 @@ export async function ButtonsSection({ range }: { range: Range }) {
   const byLocal = pivot(rows, (r) => r.local ?? "");
 
   return (
-    <ChartCard id="botoes" title="Pedidos e contatos" description="Cada clique em WhatsApp, telefone, rota e encomenda — e de onde veio quem clicou">
+    <ChartCard id="botoes" title="Pedidos e contatos" description="Cada clique em WhatsApp, telefone, rota e encomenda — pago (veio de anúncio) ou orgânico (busca, direto, social)">
       {!rows.length ? (
         <EmptyState compact title="Nenhum pedido ou contato no período" hint="" />
       ) : (
@@ -123,6 +131,24 @@ export async function ButtonsSection({ range }: { range: Range }) {
                     <p className="text-xs text-tinta-suave">
                       {fmtInt(c.sessions)} {c.sessions === 1 ? "visita" : "visitas"}
                     </p>
+                    <ul className="flex flex-wrap gap-1.5" aria-label="Origem dos cliques">
+                      <li
+                        className={cn(
+                          "rounded-full px-2 py-0.5 text-[0.68rem] font-semibold tabular-nums",
+                          c.paid ? "bg-primaria/10 text-primaria" : "bg-tinta/5 text-tinta-suave/60"
+                        )}
+                      >
+                        Pago {fmtInt(c.paid)}
+                      </li>
+                      <li
+                        className={cn(
+                          "rounded-full px-2 py-0.5 text-[0.68rem] font-semibold tabular-nums",
+                          c.organic ? "bg-manjericao/10 text-manjericao" : "bg-tinta/5 text-tinta-suave/60"
+                        )}
+                      >
+                        Orgânico {fmtInt(c.organic)}
+                      </li>
+                    </ul>
                     <InlineBar value={c.clicks} max={maxClicks} color="bg-manjericao" />
                   </div>
                 </li>
