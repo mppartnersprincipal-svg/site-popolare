@@ -6,7 +6,7 @@ import { getImage } from "@/lib/images";
 import { Picture } from "@/components/ui/Picture";
 import { CtaWhatsApp, SECONDARY_CTA } from "./LpCta";
 
-/** Moldura do hero (largura/altura): arco 4:5; no celular das LPs por produto, 4:3 para a foto caber acima do H1 */
+/** Moldura do hero (largura/altura): arco 4:5; no celular, 4:3 para a foto caber acima do H1 */
 const FRAME_RATIO = 0.8;
 const FRAME_RATIO_MOBILE_FIRST = 4 / 3;
 
@@ -41,7 +41,7 @@ interface LpHeroProps {
   tema: LpTema;
   /** Mensagem do WhatsApp da página */
   message: string;
-  /** No celular, a foto do produto vem antes do H1 (LPs por produto: quem clicou em "lasanha" vê a lasanha na 1ª tela) */
+  /** No celular, a foto do produto vem antes do H1 (quem clicou em "lasanha" vê a lasanha na 1ª tela) */
   isImageFirst: boolean;
 }
 

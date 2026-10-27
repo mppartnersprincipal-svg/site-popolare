@@ -34,7 +34,7 @@ export interface LpGrupo {
   };
   /** Aba própria, primeira e aberta no cardápio. Sem ela, abre "Mais pedidos" (a LP original) */
   destaque?: LpDestaque;
-  /** Cardápio logo depois do hero (as LPs por produto); a /massas-em-goiania mantém a ordem original */
+  /** Cardápio logo depois do hero e, no celular, foto do produto antes do H1 (todas as LPs de anúncio desde 27/10) */
   catalogoAposHero: boolean;
   /** ids de LP_KITS, na ordem */
   kits: readonly string[];
@@ -60,7 +60,7 @@ const CONTEUDO: Record<LpGrupoId, GrupoConteudo> = {
     breadcrumb: "Massas em Goiânia",
     seo: LP_SEO,
     hero: { ...LP_HERO, produto: "sfogliatti-bianco" },
-    catalogoAposHero: false,
+    catalogoAposHero: true,
     kits: LP_KITS_PADRAO,
     faq: [],
     anuncio: "das massas artesanais",

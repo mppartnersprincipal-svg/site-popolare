@@ -60,13 +60,13 @@ export function LpPage({ grupo, tema }: LpPageProps) {
       {/* Hero: H1 do tema + promessa do anúncio + CTA + prova */}
       <LpHero grupo={grupo} tema={tema} message={message} isImageFirst={grupo.catalogoAposHero} />
 
-      {/* LPs por produto: o cardápio (aba do grupo aberta) vem logo depois do hero */}
+      {/* Cardápio (aba do grupo aberta) logo depois do hero: quem clicou no anúncio vê o produto e já pode montar o pedido */}
       {grupo.catalogoAposHero && catalog}
 
       <LpSteps />
       <LpFrozen rastreio={rastreio} />
 
-      {/* /massas-em-goiania: cardápio na posição original */}
+      {/* Ordem antiga (cardápio depois de "Congelados"), se algum grupo desligar catalogoAposHero */}
       {!grupo.catalogoAposHero && catalog}
 
       <LpKits kitIds={grupo.kits} rastreio={rastreio} />
