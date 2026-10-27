@@ -58,7 +58,7 @@ export function LpPage({ grupo, tema }: LpPageProps) {
       <JsonLd data={[faqSchema(faq), breadcrumbSchema([{ name: grupo.breadcrumb, path: grupo.rota }])]} />
 
       {/* Hero: H1 do tema + promessa do anúncio + CTA + prova */}
-      <LpHero grupo={grupo} tema={tema} message={message} />
+      <LpHero grupo={grupo} tema={tema} message={message} isImageFirst={grupo.catalogoAposHero} />
 
       {/* LPs por produto: o cardápio (aba do grupo aberta) vem logo depois do hero */}
       {grupo.catalogoAposHero && catalog}

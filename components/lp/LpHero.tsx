@@ -6,8 +6,9 @@ import { getImage } from "@/lib/images";
 import { Picture } from "@/components/ui/Picture";
 import { CtaWhatsApp, SECONDARY_CTA } from "./LpCta";
 
-/** Moldura do hero: arco 4:5 (largura/altura) */
+/** Moldura do hero (largura/altura): arco 4:5; no celular das LPs por produto, 4:3 para a foto caber acima do H1 */
 const FRAME_RATIO = 0.8;
+const FRAME_RATIO_MOBILE_FIRST = 4 / 3;
 
 function hasRealPhoto(item: MenuItem | undefined): item is MenuItem & { image: string } {
   return Boolean(item?.image && !item.imageIllustrative);
@@ -23,9 +24,11 @@ function heroItem(grupo: LpGrupo, tema: LpTema): MenuItem & { image: string } {
 }
 
 /** Foto mais larga que a moldura é recortada (object-cover): a largura exibida cresce na mesma proporção */
-function heroSizes(image: string): string {
-  const widthFactor = Math.max(1, 1 / FRAME_RATIO / getImage(image).aspect);
-  return `(min-width: 1024px) ${Math.round(32 * widthFactor)}vw, ${Math.round(91 * widthFactor)}vw`;
+function heroSizes(image: string, isImageFirst: boolean): string {
+  const { aspect } = getImage(image);
+  const widthFactor = (frameRatio: number) => Math.max(1, 1 / frameRatio / aspect);
+  const mobileRatio = isImageFirst ? FRAME_RATIO_MOBILE_FIRST : FRAME_RATIO;
+  return `(min-width: 1024px) ${Math.round(32 * widthFactor(FRAME_RATIO))}vw, ${Math.round(91 * widthFactor(mobileRatio))}vw`;
 }
 
 function lowerFirst(text: string): string {
@@ -38,16 +41,21 @@ interface LpHeroProps {
   tema: LpTema;
   /** Mensagem do WhatsApp da página */
   message: string;
+  /** No celular, a foto do produto vem antes do H1 (LPs por produto: quem clicou em "lasanha" vê a lasanha na 1ª tela) */
+  isImageFirst: boolean;
 }
 
 /** Hero das LPs: H1 do tema (renderizado no servidor, já na variante estática), promessa, CTA e prova. */
-export function LpHero({ grupo, tema, message }: LpHeroProps) {
+export function LpHero({ grupo, tema, message, isImageFirst }: LpHeroProps) {
   const item = heroItem(grupo, tema);
   const legenda = item.badge ? lowerFirst(BADGE_LABEL[item.badge]) : lowerFirst(item.namePt);
   const { hero, rastreio } = grupo;
+  const imageColumn = isImageFirst ? "order-first lg:order-none lg:col-span-5" : "lg:col-span-5";
+  const frame = isImageFirst ? "aspect-[4/3] lg:aspect-[4/5] lg:max-h-[70svh]" : "aspect-[4/5] max-h-[70svh]";
+  const sectionPadding = isImageFirst ? "pt-20 md:pt-32" : "pt-24 md:pt-32";
 
   return (
-    <section data-section="lp-hero" aria-labelledby="lp-titulo" className="relative overflow-hidden pb-14 pt-24 md:pb-20 md:pt-32">
+    <section data-section="lp-hero" aria-labelledby="lp-titulo" className={`relative overflow-hidden pb-14 md:pb-20 ${sectionPadding}`}>
       <div className="container-popolare grid items-center gap-10 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <p className="eyebrow text-primaria">{hero.eyebrow}</p>
@@ -79,13 +87,13 @@ export function LpHero({ grupo, tema, message }: LpHeroProps) {
             ))}
           </dl>
         </div>
-        <div className="lg:col-span-5">
-          <div className="relative mx-auto aspect-[4/5] max-h-[70svh] overflow-hidden rounded-t-[999px] rounded-b-[1.75rem] shadow-[0_40px_90px_-40px_rgba(89,14,19,0.6)]">
+        <div className={imageColumn}>
+          <div className={`relative mx-auto ${frame} overflow-hidden rounded-t-[999px] rounded-b-[1.75rem] shadow-[0_40px_90px_-40px_rgba(89,14,19,0.6)]`}>
             <Picture
               image={item.image}
               alt={`${item.nameIt} (${item.namePt}), massa artesanal da Popolare em Goiânia`}
               priority
-              sizes={heroSizes(item.image)}
+              sizes={heroSizes(item.image, isImageFirst)}
               className="block h-full w-full"
               imgClassName="h-full w-full object-cover"
             />
