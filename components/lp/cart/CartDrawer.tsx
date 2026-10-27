@@ -15,8 +15,15 @@ import { AddToCart } from "./AddToCart";
 const MAX_OBS = 300;
 const FOCUSABLE = 'a[href], button:not([disabled]), input, textarea, [tabindex]:not([tabindex="-1"])';
 
+interface CartDrawerProps {
+  /** data-track-local do envio e dos botões da lista (lp-carrinho, lp-lasanha-carrinho…) */
+  local: string;
+  /** 1ª linha da mensagem (anuncioCartIntro da página) */
+  intro: string;
+}
+
 /** Gaveta "Meu pedido": lista com quantidades, refratário, observações e envio pelo WhatsApp. */
-export function CartDrawer() {
+export function CartDrawer({ local, intro }: CartDrawerProps) {
   const { lines } = useCart();
   const entries = resolveLines(lines);
   const count = countItems(lines);
@@ -57,13 +64,13 @@ export function CartDrawer() {
   };
 
   const hasBakeItems = entries.some((e) => e.item.category === "al-forno" || e.item.category === "pronti");
-  const message = cartMessage({ entries, refratario: hasBakeItems && wantsRefratario, observacoes: notes });
+  const message = cartMessage({ intro, entries, refratario: hasBakeItems && wantsRefratario, observacoes: notes });
   const href = whatsappUrl(MAIN_UNIT, message);
   const productIds = lines.map((l) => l.id).join(",");
 
   const removeLine = (id: string) => {
     cartStore.remove(id);
-    track("remove_from_cart", { produto: id, quantidade: 0, local: "lp-carrinho" });
+    track("remove_from_cart", { produto: id, quantidade: 0, local });
   };
 
   const goToProducts = () => {
@@ -135,7 +142,7 @@ export function CartDrawer() {
                       {qty > 1 && ` · ${qty} un.`}
                     </p>
                   </div>
-                  <AddToCart item={item} local="lp-carrinho" compact />
+                  <AddToCart item={item} local={local} compact />
                   <button
                     type="button"
                     onClick={() => removeLine(item.id)}
@@ -179,7 +186,7 @@ export function CartDrawer() {
                 rel="noopener noreferrer"
                 onClick={() => setIsSent(true)}
                 data-track="click_whatsapp"
-                data-track-local="lp-carrinho"
+                data-track-local={local}
                 data-track-itens={count}
                 data-track-produtos={productIds.slice(0, 200)}
                 className="flex w-full items-center justify-center gap-2 rounded-full bg-[#1f9e4f] px-6 py-4 font-semibold text-white shadow-[0_14px_36px_-12px_rgba(31,158,79,0.8)] transition-transform duration-300 hover:scale-[1.02]"

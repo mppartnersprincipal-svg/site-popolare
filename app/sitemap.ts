@@ -1,9 +1,12 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/data/business";
+import { LP_GRUPOS } from "@/data/lpGrupos";
 import { allPosts } from "@/lib/blog";
 
 // Data do lançamento do novo site; atualize ao mudar conteúdo relevante
 const SITE_UPDATED = "2026-10-13";
+// LPs por grupo de anúncios (também indexáveis: "lasanha congelada goiânia" vale no orgânico)
+const LPS_UPDATED = "2026-10-27";
 
 const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
@@ -21,6 +24,12 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...ROUTES.map((r) => ({ url: `${SITE_URL}${r.path === "/" ? "" : r.path}`, lastModified: SITE_UPDATED, changeFrequency: r.changeFrequency, priority: r.priority })),
+    ...LP_GRUPOS.filter((g) => !ROUTES.some((r) => r.path === g.rota)).map((g) => ({
+      url: `${SITE_URL}${g.rota}`,
+      lastModified: LPS_UPDATED,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
     ...allPosts().map((p) => ({ url: `${SITE_URL}/blog/${p.slug}`, lastModified: p.data, changeFrequency: "yearly" as const, priority: 0.4 })),
   ];
 }

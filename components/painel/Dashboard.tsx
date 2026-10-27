@@ -35,7 +35,7 @@ import { ClicksSection, LiveSection } from "./sections/ClicksSection";
 const TITLES: Record<Scope, { title: string; subtitle: string }> = {
   lp: {
     title: "LP · Google Ads",
-    subtitle: "Visitas que entraram por /massas-em-goiania (a página dos anúncios)",
+    subtitle: "Visitas que entraram pelas páginas dos anúncios (/massas-em-goiania e as LPs por produto)",
   },
   site: {
     title: "Site",

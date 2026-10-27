@@ -74,8 +74,8 @@ export interface LpExtra {
   imageAlt?: string;
   /** Imagem gerada por IA: o card mostra "imagem ilustrativa" */
   imageIllustrative?: boolean;
-  /** Mensagem pré-pronta do WhatsApp */
-  message: string;
+  /** Pedido no WhatsApp, depois de "Vi o anúncio e " (anuncioPedido) */
+  pedido: string;
   cta: string;
   /** yyyy-mm-dd — o card some sozinho depois desta data (itens sazonais) */
   validUntil?: string;
@@ -94,7 +94,7 @@ export const LP_EXTRAS: readonly LpExtra[] = [
     text: "A tradição italiana do dia 29: nhoque de batata feito à mão para o almoço da sorte. Reserve o seu antes do dia.",
     image: "produtos/gnocchi",
     imageAlt: "Nhoque de batata da Popolare servido com molho e queijo ralado",
-    message: "Olá, Popolare! Vi o site e quero reservar o Nhoque da Fortuna do dia 29. Como funciona?",
+    pedido: "quero reservar o Nhoque da Fortuna do dia 29. Como funciona?",
     cta: "Reservar o Nhoque da Fortuna",
   },
   {
@@ -105,7 +105,7 @@ export const LP_EXTRAS: readonly LpExtra[] = [
     image: "produtos/sfogliatti-frango-pequi",
     imageAlt: "Sfogliatti de frango com pequi ao molho de tomate, com pequis inteiros ao lado (imagem ilustrativa)",
     imageIllustrative: true,
-    message: "Olá, Popolare! Vi o site e quero o Sfogliatti de Frango com Pequi, a massa do mês. Está disponível?",
+    pedido: "quero o Sfogliatti de Frango com Pequi, a massa do mês. Está disponível?",
     cta: "Quero a massa do mês",
     validUntil: "2026-10-31",
   },
@@ -116,7 +116,7 @@ export const LP_EXTRAS: readonly LpExtra[] = [
     text: "Focaccia e sourdough frescos, e os pães congelados da Cantina em Casa, marca parceira da Popolare. Para fazer a scarpetta no molho que ficou no prato.",
     image: "loja/grissini",
     imageAlt: "Grissini e pães do empório da Popolare na prateleira de madeira",
-    message: "Olá, Popolare! Vi o site e quero saber quais pães (focaccia, sourdough, congelados) vocês têm hoje.",
+    pedido: "quero saber quais pães (focaccia, sourdough, congelados) vocês têm hoje.",
     cta: "Perguntar sobre os pães",
   },
   {
@@ -126,7 +126,7 @@ export const LP_EXTRAS: readonly LpExtra[] = [
     text: "O empório da loja tem vinhos, geleias e produtos italianos escolhidos pela Carina para acompanhar as massas. Peça uma sugestão para o seu prato.",
     image: "loja/vinhos",
     imageAlt: "Prateleira de vinhos do empório da Popolare",
-    message: "Olá, Popolare! Vi o site e quero uma sugestão de vinho ou produto do empório para acompanhar as massas.",
+    pedido: "quero uma sugestão de vinho ou produto do empório para acompanhar as massas.",
     cta: "Pedir uma sugestão",
   },
 ];
@@ -195,7 +195,18 @@ export const LP_KITS: readonly LpKit[] = [
     imageAlt: "Cappelletti de frango da Popolare em caldo",
     items: ["cappelletti-pollo", "brodo-verdure"],
   },
+  {
+    id: "noite-de-nhoque",
+    name: "Noite de nhoque",
+    tagline: "Os dois nhoques da casa e dois molhos para variar o prato.",
+    image: "produtos/gnocchi",
+    imageAlt: "Nhoque de batata da Popolare servido com molho e queijo ralado",
+    items: ["gnocchi-patate", "gnocchi-ripieni", "sugo-pomodoro", "quattro-formaggi"],
+  },
 ];
+
+/** Kits da /massas-em-goiania (as outras LPs escolhem a ordem em data/lpGrupos.ts) */
+export const LP_KITS_PADRAO = ["domingo-em-familia", "noite-italiana", "para-receber", "cappelletti-in-brodo"] as const;
 
 const deliveryNames = DELIVERY.map((d) => d.name).join(" e ");
 

@@ -13,6 +13,23 @@ export function generalMessage(): string {
   return "Olá, Popolare! Vim pelo site e gostaria de fazer um pedido.";
 }
 
+// LPs do Google Ads: a loja sabe pela mensagem que o cliente veio do anúncio (e de qual)
+
+/** `produto` completa a frase: "da lasanha congelada", "do nhoque artesanal"… */
+export function anuncioMessage(produto: string): string {
+  return `Olá, Popolare! Vi o anúncio ${produto} e quero fazer um pedido. Pode me ajudar?`;
+}
+
+/** Pedidos que não são do cardápio (extras da LP): "quero reservar o Nhoque da Fortuna…" */
+export function anuncioPedido(pedido: string): string {
+  return `Olá, Popolare! Vi o anúncio e ${pedido}`;
+}
+
+/** 1ª linha do "Meu pedido" nas LPs */
+export function anuncioCartIntro(produto: string): string {
+  return `Olá, Popolare! Vi o anúncio ${produto} e quero fazer este pedido:`;
+}
+
 type NamedItem = Pick<MenuItem, "nameIt" | "namePt" | "size">;
 
 function displayName(item: Pick<MenuItem, "nameIt" | "namePt">): string {
@@ -28,12 +45,14 @@ export interface CartOrder {
   /** Montar as massas de assar no refratário do cliente (encomenda) */
   refratario?: boolean;
   observacoes?: string;
+  /** 1ª linha da mensagem (nas LPs, anuncioCartIntro) */
+  intro?: string;
 }
 
 /** Mensagem do "Meu pedido" da LP: lista com quantidades, sem preço — a loja confirma valor e disponibilidade. */
 export function cartMessage(order: CartOrder, unit: StoreUnit = MAIN_UNIT): string {
   const linhas = [
-    "Olá, Popolare! Vim pelo site e quero fazer este pedido:",
+    order.intro ?? "Olá, Popolare! Vim pelo site e quero fazer este pedido:",
     "",
     ...order.entries.map(({ item, qty }) => `• ${qty}× ${displayName(item)} — ${item.size}`),
     "",

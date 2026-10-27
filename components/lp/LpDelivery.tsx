@@ -1,11 +1,18 @@
 import { DELIVERY, MAIN_UNIT, formatAddress } from "@/data/business";
-import { generalMessage, whatsappUrl } from "@/lib/whatsapp";
+import { whatsappUrl } from "@/lib/whatsapp";
 import { Picture } from "@/components/ui/Picture";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
+interface LpDeliveryProps {
+  rastreio: string;
+  /** Mensagem do WhatsApp da página */
+  message: string;
+}
+
 /** Onde retirar (loja do Setor Sul) e como receber em casa (parceiros de entrega). */
-export function LpDelivery() {
+export function LpDelivery({ rastreio, message }: LpDeliveryProps) {
   const unit = MAIN_UNIT;
+  const local = `${rastreio}-loja`;
   return (
     <section id="lojas" data-section="lp-loja" aria-labelledby="lp-loja-titulo" className="bg-farinha py-16 md:py-24">
       <div className="container-popolare">
@@ -35,7 +42,7 @@ export function LpDelivery() {
                   <dt className="eyebrow text-[0.65rem] text-madeira-escura">Telefones</dt>
                   <dd className="mt-1 space-y-0.5">
                     {unit.phones.map((p) => (
-                      <a key={p} href={`tel:+55${p.replace(/\D/g, "")}`} data-track="click_phone" data-track-unidade={unit.id} data-track-local="lp-loja" className="flex items-center gap-1.5 hover:text-primaria">
+                      <a key={p} href={`tel:+55${p.replace(/\D/g, "")}`} data-track="click_phone" data-track-unidade={unit.id} data-track-local={local} className="flex items-center gap-1.5 hover:text-primaria">
                         {p}
                         {p === unit.whatsappDisplay && (
                           <>
@@ -66,17 +73,17 @@ export function LpDelivery() {
                   rel="noopener noreferrer"
                   data-track="click_directions"
                   data-track-unidade={unit.id}
-                  data-track-local="lp-loja"
+                  data-track-local={local}
                   className="rounded-full bg-primaria px-6 py-3 font-semibold text-farinha transition-transform duration-300 hover:scale-[1.04] hover:bg-vinho"
                 >
                   Como chegar
                 </a>
                 <a
-                  href={whatsappUrl(unit, generalMessage())}
+                  href={whatsappUrl(unit, message)}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-track="click_whatsapp"
-                  data-track-local="lp-loja"
+                  data-track-local={local}
                   data-track-unidade={unit.id}
                   className="rounded-full border border-primaria/30 px-6 py-3 font-semibold text-primaria transition-colors hover:bg-primaria hover:text-farinha"
                 >
@@ -102,7 +109,7 @@ export function LpDelivery() {
                     rel="noopener noreferrer"
                     data-track="click_delivery"
                     data-track-canal={d.name}
-                    data-track-local="lp-loja"
+                    data-track-local={local}
                     className="group flex items-center justify-between gap-4 rounded-2xl bg-farinha/10 px-5 py-4 font-semibold transition-colors hover:bg-farinha hover:text-primaria"
                   >
                     {d.name}

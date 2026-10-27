@@ -3,7 +3,7 @@
 import { useSyncExternalStore } from "react";
 import { MAIN_UNIT } from "@/data/business";
 import { LP_EXTRAS, type LpExtra } from "@/data/lp";
-import { whatsappUrl } from "@/lib/whatsapp";
+import { anuncioPedido, whatsappUrl } from "@/lib/whatsapp";
 import { Picture } from "@/components/ui/Picture";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
@@ -20,8 +20,13 @@ function isActive(extra: LpExtra, today: string): boolean {
   return today <= extra.validUntil;
 }
 
+interface LpExtrasProps {
+  /** Prefixo do data-track-local da página (lp, lp-lasanha…) */
+  rastreio: string;
+}
+
 /** Além do cardápio: Nhoque da Fortuna, massa do mês, pães e empório — pedidos direto pelo WhatsApp. */
-export function LpExtras() {
+export function LpExtras({ rastreio }: LpExtrasProps) {
   const today = useSyncExternalStore(subscribeNoop, todayIso, () => "");
   const extras = LP_EXTRAS.filter((e) => isActive(e, today));
 
@@ -64,11 +69,11 @@ export function LpExtras() {
                   <h3 className="italiano text-[1.6rem] leading-[1.05] text-tinta">{extra.title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-tinta-suave">{extra.text}</p>
                   <a
-                    href={whatsappUrl(MAIN_UNIT, extra.message)}
+                    href={whatsappUrl(MAIN_UNIT, anuncioPedido(extra.pedido))}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-track="click_whatsapp"
-                    data-track-local="lp-extras"
+                    data-track-local={`${rastreio}-extras`}
                     data-track-produto={extra.id}
                     className="mt-5 inline-flex items-center justify-center gap-2 rounded-full border border-primaria px-4 py-2.5 text-sm font-semibold text-primaria transition-colors hover:bg-primaria hover:text-farinha"
                   >

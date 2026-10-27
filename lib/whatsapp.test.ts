@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { UNITS } from "@/data/business";
 import { findItem, MENU } from "@/data/menu";
-import { cartMessage, orderMessage, productMessage, unitById, whatsappUrl } from "./whatsapp";
+import { anuncioCartIntro, anuncioMessage, anuncioPedido, cartMessage, orderMessage, productMessage, unitById, whatsappUrl } from "./whatsapp";
 
 describe("whatsapp", () => {
   test("monta a URL wa.me com a mensagem codificada", () => {
@@ -75,6 +75,29 @@ describe("mensagem do carrinho (Meu pedido)", () => {
     const url = whatsappUrl(UNITS[0], cartMessage({ entries: [{ item: findItem("pesto")!, qty: 3 }] }));
     expect(url.startsWith("https://wa.me/556239456633?text=")).toBe(true);
     expect(decodeURIComponent(url.split("text=")[1])).toContain("3× Pesto");
+  });
+});
+
+describe("mensagens das LPs de anúncio", () => {
+  test("CTA cita o produto da página, sem preço", () => {
+    const msg = anuncioMessage("da lasanha congelada");
+    expect(msg).toBe("Olá, Popolare! Vi o anúncio da lasanha congelada e quero fazer um pedido. Pode me ajudar?");
+    expect(msg).not.toMatch(/R\$/);
+  });
+
+  test("extras (Nhoque da Fortuna, empório…) também saem com 'Vi o anúncio'", () => {
+    expect(anuncioPedido("quero reservar o Nhoque da Fortuna.")).toBe("Olá, Popolare! Vi o anúncio e quero reservar o Nhoque da Fortuna.");
+  });
+
+  test("Meu pedido da LP abre com o anúncio e mantém a lista", () => {
+    const msg = cartMessage({ intro: anuncioCartIntro("do nhoque artesanal"), entries: [{ item: findItem("gnocchi-patate")!, qty: 2 }] });
+    expect(msg.split("\n")[0]).toBe("Olá, Popolare! Vi o anúncio do nhoque artesanal e quero fazer este pedido:");
+    expect(msg).toContain("• 2× Gnocchi di Patate (Nhoque de batata) — 500 g");
+  });
+
+  test("sem intro, o carrinho mantém a abertura do site", () => {
+    const msg = cartMessage({ entries: [{ item: findItem("pesto")!, qty: 1 }] });
+    expect(msg.split("\n")[0]).toBe("Olá, Popolare! Vim pelo site e quero fazer este pedido:");
   });
 });
 

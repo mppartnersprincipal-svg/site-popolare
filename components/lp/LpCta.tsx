@@ -1,8 +1,6 @@
 import { MAIN_UNIT } from "@/data/business";
 import { whatsappUrl } from "@/lib/whatsapp";
 
-export const LP_WPP_MSG = "Olá, Popolare! Vi o site e quero comprar massas. Pode me ajudar?";
-
 export const SECONDARY_CTA =
   "inline-flex items-center justify-center rounded-full border border-tinta/20 bg-farinha/70 px-6 py-3.5 font-semibold text-tinta transition-colors hover:border-primaria hover:text-primaria";
 
@@ -16,16 +14,18 @@ const VARIANTS = {
 interface CtaWhatsAppProps {
   /** data-track-local: onde o botão está na LP */
   local: string;
+  /** Mensagem pronta do WhatsApp (anuncioMessage da página) */
+  message: string;
   label?: string;
   variant?: keyof typeof VARIANTS;
   className?: string;
 }
 
 /** CTA principal da LP (WhatsApp da loja), repetido em todas as dobras. */
-export function CtaWhatsApp({ local, label = "Pedir pelo WhatsApp", variant = "primaria", className = "" }: CtaWhatsAppProps) {
+export function CtaWhatsApp({ local, message, label = "Pedir pelo WhatsApp", variant = "primaria", className = "" }: CtaWhatsAppProps) {
   return (
     <a
-      href={whatsappUrl(MAIN_UNIT, LP_WPP_MSG)}
+      href={whatsappUrl(MAIN_UNIT, message)}
       target="_blank"
       rel="noopener noreferrer"
       data-track="click_whatsapp"

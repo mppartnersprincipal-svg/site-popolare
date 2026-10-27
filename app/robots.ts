@@ -4,7 +4,8 @@ import { SITE_URL } from "@/data/business";
 // GEO: buscadores e assistentes de IA podem ler e citar o conteúdo
 const AI_CRAWLERS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "PerplexityBot", "Google-Extended", "Applebot-Extended", "Bingbot"];
 
-const PRIVATE = ["/painel", "/api/"];
+// /lp-variante: variantes de H1 das LPs, só via rewrite do proxy (canonical na rota pública)
+const PRIVATE = ["/painel", "/api/", "/lp-variante"];
 
 export default function robots(): MetadataRoute.Robots {
   return {

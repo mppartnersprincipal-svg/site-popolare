@@ -1,5 +1,5 @@
 import { getBlog, getTopPages, type Range } from "@/lib/painel/queries";
-import { fmtDuration, fmtInt, fmtPct, labelPage, type PageRow } from "@/lib/painel/types";
+import { fmtDuration, fmtInt, fmtPct, labelPage, LP_PATHS, type PageRow } from "@/lib/painel/types";
 import { ChartCard } from "../ChartCard";
 import { DataTable, InlineBar } from "../DataTable";
 import { EmptyState } from "../EmptyState";
@@ -64,9 +64,9 @@ export async function PagesSection({ range }: { range: Range }) {
 
 /** Leitura da LP: tempo e rolagem (mostra se o visitante chega até o cardápio e o CTA final). */
 export async function LpReadingSection({ range }: { range: Range }) {
-  const rows = (await getTopPages(range, 5)).filter((p) => p.path === "/massas-em-goiania");
+  const rows = (await getTopPages(range, 20)).filter((p) => LP_PATHS.includes(p.path));
   return (
-    <ChartCard id="leitura-lp" title="Leitura da LP" description="Tempo na página e até onde o visitante rola" className="h-full">
+    <ChartCard id="leitura-lp" title="Leitura das LPs" description="Tempo em cada página de anúncio e até onde o visitante rola" className="h-full">
       {rows.length ? <PagesTable rows={rows} /> : <EmptyState compact hint="" />}
     </ChartCard>
   );

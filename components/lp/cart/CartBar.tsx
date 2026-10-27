@@ -10,12 +10,21 @@ import { CartDrawer } from "./CartDrawer";
  * Rodapé flutuante da LP: WhatsApp direto sempre visível e, assim que há itens,
  * a pílula "Meu pedido" que abre a gaveta com a lista e o envio pelo WhatsApp.
  */
-export function CartBar() {
+interface CartBarProps {
+  /** Prefixo do data-track-local da página (lp, lp-lasanha…) */
+  rastreio: string;
+  /** Mensagem do botão do WhatsApp */
+  message: string;
+  /** 1ª linha da mensagem do pedido */
+  pedidoIntro: string;
+}
+
+export function CartBar({ rastreio, message, pedidoIntro }: CartBarProps) {
   const { lines, isOpen } = useCart();
   const count = countItems(lines);
 
   const open = () => {
-    track("view_cart", { itens: count, local: "lp-barra" });
+    track("view_cart", { itens: count, local: `${rastreio}-barra` });
     cartStore.open();
   };
 
@@ -43,9 +52,9 @@ export function CartBar() {
             </span>
           </button>
         )}
-        <WhatsAppFloat className="relative shrink-0" />
+        <WhatsAppFloat local={`${rastreio}-flutuante`} message={message} className="relative shrink-0" />
       </div>
-      {isOpen && <CartDrawer />}
+      {isOpen && <CartDrawer local={`${rastreio}-carrinho`} intro={pedidoIntro} />}
     </>
   );
 }

@@ -7,8 +7,14 @@ import { CtaWhatsApp, SECONDARY_CTA } from "./LpCta";
 
 const CARINA = STORY.find((c) => c.id === "carina");
 
+interface LpStoryProps {
+  rastreio: string;
+  /** Mensagem do WhatsApp da página */
+  message: string;
+}
+
 /** A família Popolare (prova de origem) + os 4 diferenciais da LP. */
-export function LpStory() {
+export function LpStory({ rastreio, message }: LpStoryProps) {
   return (
     <section data-section="lp-familia" aria-labelledby="lp-familia-titulo" className="py-16 md:py-24">
       <div className="container-popolare">
@@ -46,8 +52,8 @@ export function LpStory() {
               ))}
             </ul>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <CtaWhatsApp local="lp-familia" />
-              <Link href="/sobre-nos" data-track="click_cta" data-track-local="lp-historia" className={SECONDARY_CTA}>
+              <CtaWhatsApp local={`${rastreio}-familia`} message={message} />
+              <Link href="/sobre-nos" data-track="click_cta" data-track-local={`${rastreio}-historia`} className={SECONDARY_CTA}>
                 Conhecer a história completa
               </Link>
             </div>

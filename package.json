@@ -9,7 +9,8 @@
     "lint": "eslint",
     "images": "node scripts/process-images.mjs",
     "test": "vitest run",
-    "frames": "node scripts/extract-frames.mjs"
+    "frames": "node scripts/extract-frames.mjs",
+    "og": "node scripts/og-images.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

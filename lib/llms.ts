@@ -1,5 +1,6 @@
 // Gera /llms.txt (resumo) e /llms-full.txt (completo) a partir da fonte única de dados.
 import { BRAND, DELIVERY, ORDER_RULES, SITE_URL, SOCIAL, UNITS, formatAddress } from "@/data/business";
+import { LP_GRUPOS } from "@/data/lpGrupos";
 import { CATEGORIES, MENU } from "@/data/menu";
 import { FAQ, HOW_TO, PRESS, QUICK_FACTS, STORY, STORY_INTRO } from "@/data/content";
 import { allPosts } from "@/lib/blog";
@@ -45,6 +46,7 @@ export function buildLlmsText(full: boolean): string {
     "",
     "## Páginas",
     `- [Massas artesanais congeladas em Goiânia — onde comprar](${SITE_URL}/massas-em-goiania)`,
+    ...LP_GRUPOS.filter((g) => g.rota !== "/massas-em-goiania").map((g) => `- [${g.seo.title}](${SITE_URL}${g.rota})`),
     `- [Cardápio completo](${SITE_URL}/cardapio)`,
     `- [História da família](${SITE_URL}/sobre-nos)`,
     `- [Encomendas](${SITE_URL}/encomendas)`,

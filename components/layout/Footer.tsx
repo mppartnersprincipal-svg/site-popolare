@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BRAND, DELIVERY, SOCIAL, UNITS, formatAddress } from "@/data/business";
+import { LP_GRUPOS } from "@/data/lpGrupos";
 import { generalMessage, whatsappUrl } from "@/lib/whatsapp";
 import { LogoCompleto } from "@/components/ui/Logo";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -15,6 +16,9 @@ const LINKS = [
   { href: "/contato", label: "Loja e contato" },
   { href: "/politica-de-privacidade", label: "Privacidade" },
 ] as const;
+
+/** LPs por produto: links internos para não ficarem órfãs no orgânico */
+const POR_TIPO = LP_GRUPOS.filter((g) => g.rota !== "/massas-em-goiania").map((g) => ({ href: g.rota, label: g.breadcrumb }));
 
 export function Footer() {
   return (
@@ -97,6 +101,16 @@ export function Footer() {
           <h2 className="eyebrow text-dourado">Navegue</h2>
           <ul className="mt-4 space-y-2">
             {LINKS.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="text-farinha/85 hover:text-farinha">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <h2 className="eyebrow mt-8 text-dourado">Massas por tipo</h2>
+          <ul className="mt-4 space-y-2">
+            {POR_TIPO.map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="text-farinha/85 hover:text-farinha">
                   {l.label}

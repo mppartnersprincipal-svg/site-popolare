@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import { CATEGORIES, findItem, itemsByCategory, type MenuCategoryId, type MenuItem } from "@/data/menu";
 import { LP_PRODUCTS } from "@/data/lp";
 import { prefersReducedMotion } from "@/lib/device";
@@ -24,7 +24,7 @@ export function scrollToProducts(): void {
   }, SCROLL_SETTLE_MS);
 }
 
-type TabId = "mais-pedidos" | MenuCategoryId;
+type TabId = "destaque" | "mais-pedidos" | MenuCategoryId;
 
 interface Tab {
   id: TabId;
@@ -34,10 +34,12 @@ interface Tab {
   items: readonly MenuItem[];
 }
 
-const FEATURED = LP_PRODUCTS.map((id) => findItem(id)).filter((i): i is MenuItem => Boolean(i));
+function resolveItems(ids: readonly string[]): MenuItem[] {
+  return ids.map((id) => findItem(id)).filter((i): i is MenuItem => Boolean(i));
+}
 
-const TABS: readonly Tab[] = [
-  { id: "mais-pedidos", label: "Mais pedidos", sub: "os favoritos de Goiânia", description: "Os itens que mais saem no balcão e no WhatsApp.", items: FEATURED },
+const BASE_TABS: readonly Tab[] = [
+  { id: "mais-pedidos", label: "Mais pedidos", sub: "os favoritos de Goiânia", description: "Os itens que mais saem no balcão e no WhatsApp.", items: resolveItems(LP_PRODUCTS) },
   ...CATEGORIES.map((c) => ({
     id: c.id,
     label: c.nameIt,
@@ -47,6 +49,21 @@ const TABS: readonly Tab[] = [
   })),
 ];
 
+/** Aba própria da LP por produto (data/lpGrupos.ts): primeira e aberta */
+export interface CatalogHighlight {
+  label: string;
+  sub: string;
+  description: string;
+  /** ids de data/menu.ts, na ordem */
+  produtos: readonly string[];
+}
+
+interface LpCatalogProps {
+  highlight?: CatalogHighlight;
+  /** Prefixo do data-track-local da página (lp, lp-lasanha…) */
+  rastreio: string;
+}
+
 const SELECT_EVENT = "lp:categoria";
 
 /** Outras seções (ex.: Congelados) abrem uma aba do cardápio e rolam até ela. */
@@ -55,9 +72,14 @@ export function selectCatalogTab(id: TabId): void {
 }
 
 /** Cardápio completo com abas por categoria e botão "Adicionar" em cada item. */
-export function LpCatalog() {
-  const [tabId, setTabId] = useState<TabId>("mais-pedidos");
-  const tab = TABS.find((t) => t.id === tabId) ?? TABS[0];
+export function LpCatalog({ highlight, rastreio }: LpCatalogProps) {
+  const tabs = useMemo<readonly Tab[]>(
+    () => (highlight ? [{ id: "destaque", label: highlight.label, sub: highlight.sub, description: highlight.description, items: resolveItems(highlight.produtos) }, ...BASE_TABS] : BASE_TABS),
+    [highlight]
+  );
+  const local = `${rastreio}-catalogo`;
+  const [tabId, setTabId] = useState<TabId>(tabs[0].id);
+  const tab = tabs.find((t) => t.id === tabId) ?? tabs[0];
   const currentTab = useRef<TabId>(tabId);
   const shouldScrollAfterRefresh = useRef(false);
 
@@ -68,7 +90,7 @@ export function LpCatalog() {
   useEffect(() => {
     const onSelect = (e: Event) => {
       const id = (e as CustomEvent<TabId>).detail;
-      if (!TABS.some((t) => t.id === id)) return;
+      if (!tabs.some((t) => t.id === id)) return;
       if (id === currentTab.current) {
         scrollToProducts();
         return;
@@ -80,7 +102,7 @@ export function LpCatalog() {
     };
     window.addEventListener(SELECT_EVENT, onSelect);
     return () => window.removeEventListener(SELECT_EVENT, onSelect);
-  }, []);
+  }, [tabs]);
 
   // A altura da seção muda com a aba; os reveals abaixo (GSAP, já carregado pelo layout) precisam remedir
   useEffect(() => {
@@ -106,22 +128,22 @@ export function LpCatalog() {
 
   const choose = (id: TabId) => {
     setTabId(id);
-    track("catalog_filter", { categoria: id, local: "lp-catalogo" });
+    track("catalog_filter", { categoria: id, local });
   };
 
   // Padrão ARIA de abas: setas/Home/End movem entre abas
   const onTabKey = (e: KeyboardEvent<HTMLButtonElement>) => {
-    const index = TABS.findIndex((t) => t.id === tabId);
+    const index = tabs.findIndex((t) => t.id === tabId);
     const next =
-      e.key === "ArrowRight" ? (index + 1) % TABS.length
-      : e.key === "ArrowLeft" ? (index - 1 + TABS.length) % TABS.length
+      e.key === "ArrowRight" ? (index + 1) % tabs.length
+      : e.key === "ArrowLeft" ? (index - 1 + tabs.length) % tabs.length
       : e.key === "Home" ? 0
-      : e.key === "End" ? TABS.length - 1
+      : e.key === "End" ? tabs.length - 1
       : -1;
     if (next < 0) return;
     e.preventDefault();
-    choose(TABS[next].id);
-    document.getElementById(`lp-aba-${TABS[next].id}`)?.focus();
+    choose(tabs[next].id);
+    document.getElementById(`lp-aba-${tabs[next].id}`)?.focus();
   };
 
   return (
@@ -144,7 +166,7 @@ export function LpCatalog() {
           data-lenis-prevent
           className="-mx-[var(--gutter)] mt-8 flex gap-2 overflow-x-auto px-[var(--gutter)] pb-2 [scrollbar-width:none] md:mt-10"
         >
-          {TABS.map((t) => {
+          {tabs.map((t) => {
             const isActive = t.id === tabId;
             return (
               <button
@@ -175,7 +197,7 @@ export function LpCatalog() {
           <ul className="mt-5 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 xl:grid-cols-4">
             {tab.items.map((item, i) => (
               <li key={`${tab.id}-${item.id}`} className="animate-[surgir_0.6s_var(--ease-out-expo)_both]" style={{ animationDelay: `${Math.min(i, 11) * 45}ms` }}>
-                <LpProductCard item={item} local="lp-catalogo" />
+                <LpProductCard item={item} local={local} />
               </li>
             ))}
           </ul>

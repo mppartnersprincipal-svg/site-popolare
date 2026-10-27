@@ -11,18 +11,26 @@ function kitItems(kit: LpKit): MenuItem[] {
   return kit.items.map((id) => findItem(id)).filter((i): i is MenuItem => Boolean(i));
 }
 
+interface LpKitsProps {
+  /** ids de LP_KITS, na ordem da página */
+  kitIds: readonly string[];
+  rastreio: string;
+}
+
 /** Sugestões prontas: combinações do cardápio que entram no pedido com um toque. */
-export function LpKits() {
+export function LpKits({ kitIds, rastreio }: LpKitsProps) {
   const { lines } = useCart();
   const inCart = new Set(lines.map((l) => l.id));
+  const kits = kitIds.map((id) => LP_KITS.find((k) => k.id === id)).filter((k): k is LpKit => Boolean(k));
+  const local = `${rastreio}-kits`;
 
   const addKit = (kit: LpKit) => {
     cartStore.addMany(kit.items);
-    track("add_to_cart", { produto: kit.id, kit: true, quantidade: kit.items.length, local: "lp-kits" });
+    track("add_to_cart", { produto: kit.id, kit: true, quantidade: kit.items.length, local });
   };
 
   const viewCart = (kit: LpKit) => {
-    track("view_cart", { local: "lp-kits", produto: kit.id });
+    track("view_cart", { local, produto: kit.id });
     cartStore.open();
   };
 
@@ -46,7 +54,7 @@ export function LpKits() {
         </div>
 
         <ul className="-mx-[var(--gutter)] mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--gutter)] pb-4 [scrollbar-width:none] sm:mx-0 sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4">
-          {LP_KITS.map((kit) => {
+          {kits.map((kit) => {
             const items = kitItems(kit);
             const isInCart = items.length > 0 && items.every((i) => inCart.has(i.id));
             return (

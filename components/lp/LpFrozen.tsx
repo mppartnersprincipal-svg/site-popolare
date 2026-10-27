@@ -6,10 +6,15 @@ import { LP_FROZEN } from "@/data/lp";
 import { track } from "@/lib/tracking";
 import { selectCatalogTab } from "./LpCatalog";
 
+interface LpFrozenProps {
+  /** Prefixo do data-track-local da página (lp, lp-lasanha…) */
+  rastreio: string;
+}
+
 /** A linha de congelados: o que é, como cuidar em casa e as 5 categorias do cardápio (atalho para a aba). */
-export function LpFrozen() {
+export function LpFrozen({ rastreio }: LpFrozenProps) {
   const goTo = (id: (typeof CATEGORIES)[number]["id"]) => {
-    track("click_cta", { local: "lp-congelados", categoria: id });
+    track("click_cta", { local: `${rastreio}-congelados`, categoria: id });
     selectCatalogTab(id);
   };
 

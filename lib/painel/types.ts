@@ -3,6 +3,7 @@
  * e rótulos pt-BR do /painel. Sem dependência de servidor — pode ir para client components.
  */
 import type { Channel } from "@/lib/attribution";
+import { LP_GRUPO_IDS, LP_TEMAS } from "@/data/lpTemas";
 import { CATEGORIES, MENU } from "@/data/menu";
 import { UNITS } from "@/data/business";
 
@@ -141,7 +142,12 @@ const UNIT_LABELS: Record<string, string> = {
   ...Object.fromEntries(UNITS.map((u) => [u.id, u.name.replace(/^Popolare /, "")])),
 };
 const PRODUCT_LABELS: Record<string, string> = Object.fromEntries(MENU.map((m) => [m.id, m.namePt]));
-const CATEGORY_LABELS: Record<string, string> = Object.fromEntries(CATEGORIES.map((c) => [c.id, c.namePt]));
+const CATEGORY_LABELS: Record<string, string> = {
+  ...Object.fromEntries(CATEGORIES.map((c) => [c.id, c.namePt])),
+  // aba própria das LPs por produto (Lasagne, Gnocchi…) e a aba "Mais pedidos"
+  destaque: "Destaque da LP",
+  "mais-pedidos": "Mais pedidos",
+};
 const PASTA_LABELS: Record<string, string> = {
   fettuccine: "Fettuccine",
   ravioli: "Ravioli",
@@ -198,9 +204,12 @@ export const EVENT_LABELS: Record<string, string> = {
   cookie_consent: "Respondeu os cookies",
 };
 
+/** Rotas das LPs do Google Ads (as 6 páginas por grupo de anúncios) */
+export const LP_PATHS: readonly string[] = LP_GRUPO_IDS.map((id) => LP_TEMAS[id].rota);
+
 export const PAGE_LABELS: Record<string, string> = {
   "/": "Home",
-  "/massas-em-goiania": "LP · Massas em Goiânia",
+  ...Object.fromEntries(LP_GRUPO_IDS.map((id) => [LP_TEMAS[id].rota, `LP · ${LP_TEMAS[id].rotulo}`])),
   "/cardapio": "Cardápio",
   "/encomendas": "Encomendas",
   "/sobre-nos": "Sobre nós",
@@ -229,8 +238,15 @@ export function labelCategory(c: string | null | undefined) {
 export function labelPasta(p: string | null | undefined) {
   return (p && PASTA_LABELS[p]) || p || "—";
 }
+/** Prefixos das LPs por produto (lp-lasanha-hero → "LP Lasanhas · topo"); a /massas-em-goiania usa "lp-" puro */
+const LP_PREFIXOS = LP_GRUPO_IDS.map((id) => LP_TEMAS[id]).filter((g) => g.rastreio !== "lp");
+
 export function labelLocal(l: string | null | undefined) {
-  return (l && LOCAL_LABELS[l]) || l || "—";
+  if (!l) return "—";
+  if (LOCAL_LABELS[l]) return LOCAL_LABELS[l];
+  const lp = LP_PREFIXOS.find((g) => l.startsWith(`${g.rastreio}-`));
+  const base = lp && LOCAL_LABELS[`lp-${l.slice(lp.rastreio.length + 1)}`];
+  return lp && base ? base.replace(/^LP · /, `LP ${lp.rotulo} · `) : l;
 }
 export function labelEvent(n: string) {
   return EVENT_LABELS[n] || n;
